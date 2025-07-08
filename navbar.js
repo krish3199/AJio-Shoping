@@ -1,10 +1,10 @@
 function nav() {
-  let navbar = document.createElement("navbar")
+  let navbar = document.createElement("div")
   navbar.innerHTML = `
         <nav class="navbar">
             <div class="nav-container">
                 <!-- Logo -->
-                <a href="#" class="logo">AJIO</a>
+                <a href="index.html" class="logo">AJIO</a>
                 
                 <!-- Navigation Menu -->
                 <ul class="nav-menu">
@@ -414,8 +414,6 @@ function nav() {
     `
   return navbar
 }
-
-// Category content data
 const categoryContent = {
   "men-clothing": {
     categories: [
@@ -528,7 +526,6 @@ const categoryContent = {
   },
 }
 
-// Function to update content based on hover
 function updateMegaMenuContent(category, contentContainer) {
   if (categoryContent[category]) {
     const content = categoryContent[category]
@@ -549,7 +546,6 @@ function updateMegaMenuContent(category, contentContainer) {
   }
 }
 
-// Initialize hover functionality
 function initializeMegaMenuHover() {
   const sidebarItems = document.querySelectorAll(".sidebar-item")
 
@@ -559,20 +555,16 @@ function initializeMegaMenuHover() {
       const parentMegaMenu = this.closest(".mega-menu")
       const contentContainer = parentMegaMenu.querySelector(".mega-menu-main")
 
-      // Remove active class from all sidebar items in this menu
       const allSidebarItems = parentMegaMenu.querySelectorAll(".sidebar-item")
       allSidebarItems.forEach((sItem) => sItem.classList.remove("active"))
 
-      // Add active class to current item
       this.classList.add("active")
 
-      // Update content
       updateMegaMenuContent(category, contentContainer)
     })
   })
 }
 
-// Mobile menu functions
 function toggleMobileMenu() {
   const hamburger = document.querySelector(".hamburger")
   const mobileMenu = document.getElementById("mobileMenu")
@@ -581,7 +573,6 @@ function toggleMobileMenu() {
   mobileMenu.classList.toggle("active")
 }
 
-// Close mobile menu when clicking outside
 function handleOutsideClick(event) {
   const navbar = document.querySelector(".navbar")
   const mobileMenu = document.getElementById("mobileMenu")
@@ -593,7 +584,6 @@ function handleOutsideClick(event) {
   }
 }
 
-// Close mobile menu when window is resized to desktop
 function handleResize() {
   if (window.innerWidth > 768) {
     const mobileMenu = document.getElementById("mobileMenu")
@@ -603,21 +593,17 @@ function handleResize() {
   }
 }
 
-// Initialize everything - this function will be called after navbar is inserted
 window.initializeNavbar = () => {
   initializeMegaMenuHover()
 
-  // Add event listeners
   document.addEventListener("click", handleOutsideClick)
   window.addEventListener("resize", handleResize)
 
-  // Add hamburger button event listener
   const hamburgerBtn = document.getElementById("hamburgerBtn")
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener("click", toggleMobileMenu)
   }
 
-  // Make toggleMobileMenu globally available
   window.toggleMobileMenu = toggleMobileMenu
 }
 

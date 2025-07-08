@@ -9,23 +9,19 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Loader Start -->
     <div id="ajio-loader">
-        <div class="ajio-loader-content">
-            <div class="ajio-spinner"></div>
-            <div class="ajio-loader-text">AJIO</div>
-        </div>
+      <div class="ajio-spinner"></div>
+      <span>Ajio</span>
     </div>
-    <!-- Loader End -->
+    <div id="main-content" style="display:none;">
     <!-- navbar -->
     <div id="Nav"></div>
     <!-- navbar -->
 
-   
     <!-- slider-1 -->
     <div class="slider-container">
+        <a href="./card.html">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="slide">
                 <img src="https://assets.ajio.com/cms/AJIO/WEB/D-RHS-UHP-1.0-S1-mainbanners-P4-dnmx-avasa-60-80-260625%20(1).jpg"
@@ -66,6 +62,7 @@
                     alt="Slide 10">
             </div>
         </div>
+        </a>
     </div>
     <div class="dots"></div>
     <!-- slider-1 -->
@@ -110,9 +107,7 @@
         <img src="https://assets.ajio.com/cms/AJIO/WEB/D-Ajiomania-UHP-1.0-FreeDelivery-07042025.jpg" alt="">
     </div>
     <!-- slider-2 -->
-    <div class="text">
-        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-RHS-UHP-1.0-SponsorsMonetization-header-19062025.jpg" alt="">
-    </div>
+    <div class="text">SPONSORS & MONETIZATION</div>
     <div class="slider-container">
         <div class="slider-wrapper">
             <div class="slide">
@@ -145,9 +140,7 @@
     <!-- slider-2 -->
 
     <!-- slider-3 -->   
-    <div class="text">
-        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-Ajiomania-UHP-1.0-S9-TopBannerMNZSection-Headercopy-07042025.jpg" alt="">
-    </div>
+    <div class="text">TOP MNZ BRANDS</div>
     <div class="slider-container">
         <div class="slider-wrapper">
             <div class="slide">
@@ -181,9 +174,10 @@
 
 
     <!-- slider-4 -->
+    <div class="text">TRENDING NOW</div>
     <section class="ajio-slider-section">
   <div class="ajio-slider-wrapper">
-    <div class="ajio-slider" id="ajioSlider">
+    <div class="ajio-slider">
       <div class="ajio-slide">
         <img src="https://assets.ajio.com/cms/AJIO/WEB/D-BBS-UHP-1%20(6-new)%20(3).jpg" alt="Trends">
 
@@ -207,8 +201,8 @@
       </div>
     </div>
 
-    <button class="ajio-nav-btn ajio-prev" id="ajioPrev">&#10094;</button>
-    <button class="ajio-nav-btn ajio-next" id="ajioNext">&#10095;</button>
+    <button class="ajio-nav-btn ajio-prev">&#10094;</button>
+    <button class="ajio-nav-btn ajio-next">&#10095;</button>
   </div>
     </section>
     <!-- slider-4 -->
@@ -237,52 +231,82 @@
 
     <div class="promo-slider-indicators" id="indicators"></div>
     </div>
-    <div id="Footer"></div>
 
-    <script>
-        // Offer Slider JS
-        const offerWrapper = document.getElementById('offerSliderWrapper');
-        const offerSlides = offerWrapper.querySelectorAll('.offer-slide');
-        const offerDotsContainer = document.getElementById('offerDots');
-        let currentOffer = 0;
-        const offerTotal = offerSlides.length;
-        const offerDots = [];
+    <!-- slider-5 -->
+    <div class="text">WESTERN WEAR</div>
+    <section class="ajio-slider-section">
+  <div class="ajio-slider-wrapper">
+    <div class="ajio-slider">
+      <div class="ajio-slide">
+        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-GFS-UHP-1.0-Footwear-adidas-min30-04072025.jpg" alt="Trends">
 
-        function updateOfferSlider() {
-            offerWrapper.style.transform = `translateX(-${100 * currentOffer}%)`;
-            offerDots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentOffer);
-            });
-        }
+      </div>
+      <div class="ajio-slide">
+        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-GFS-UHP-1.0-Footwear-uspolo-min40.jpg" alt="Yousta">
+   
+      </div>
+      <div class="ajio-slide">
+        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-GFS-UHP-1.0-Footwear-nike-min30-04062025.jpg" alt="Kurta Sets">
 
-        for (let i = 0; i < offerTotal; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                currentOffer = i;
-                updateOfferSlider();
-            });
-            offerDotsContainer.appendChild(dot);
-            offerDots.push(dot);
-        }
+      </div>
+      <div class="ajio-slide">
+          <img src="https://assets.ajio.com/cms/AJIO/WEB/D-GFS-UHP-1.0-Footwear-crocs-min30-04072025.jpg" alt="AZORTE">
+        </div>
+        <div class="ajio-slide">
+            <img src="https://assets.ajio.com/cms/AJIO/WEB/D-Ajiomania-UHP-1.0-Footwear-LC-Woodland-Min40-07042025.jpg" alt="AZORTE">
+        </div>
+        <div class="ajio-slide">
+          <img src="https://assets.ajio.com/cms/AJIO/WEB/D-Ajiomania-UHP-1.0-Footwear-Louisphilippe-Redchief-Min40-07042025.jpg" alt="AZORTE">
+        </div>
+    </div>
 
-        function nextOffer() {
-            currentOffer = (currentOffer + 1) % offerTotal;
+    <button class="ajio-nav-btn ajio-prev">&#10094;</button>
+    <button class="ajio-nav-btn ajio-next">&#10095;</button>
+  </div>
+    </section>
+    <!-- slider-5 -->
+    
+    <div id="Footer"></div> 
+
+<script>
+    // Offer Slider JS
+    const offerWrapper = document.getElementById('offerSliderWrapper');
+    const offerSlides = offerWrapper.querySelectorAll('.offer-slide');
+    const offerDotsContainer = document.getElementById('offerDots');
+    let currentOffer = 0;
+    const offerTotal = offerSlides.length;
+    const offerDots = [];
+    function updateOfferSlider() {
+        offerWrapper.style.transform = `translateX(-${100 * currentOffer}%)`;
+        offerDots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentOffer);
+        });
+    }
+    for (let i = 0; i < offerTotal; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            currentOffer = i;
             updateOfferSlider();
-        }
+        });
+        offerDotsContainer.appendChild(dot);
+        offerDots.push(dot);
+    }
+    function nextOffer() {
+        currentOffer = (currentOffer + 1) % offerTotal;
+        updateOfferSlider();
+    }
+    setInterval(nextOffer, 3000);
+</script>
+<script type="module">
+    import nav from './navbar.js'
+    document.getElementById("Nav").appendChild(nav());
+    if (window.initializeNavbar) window.initializeNavbar();
 
-        setInterval(nextOffer, 3000);
-    </script>
-    <script type="module">
-        import nav from './navbar.js'
-        // document.getElementById("Nav").appendChild(nav());
-        document.body.prepend(nav());
-        window.initializeNavbar();
-
-        import footer from './footer.js'
-        document.getElementById("Footer").appendChild(footer())
-    </script>
+    import footer from './footer.js'
+    document.getElementById("Footer").appendChild(footer())
+</script>
 
 <script>
     document.querySelectorAll('.slider-container').forEach((container, sliderIndex) => {
@@ -311,8 +335,6 @@
             dots.push(dot);
         }
 
-
-        
         function updateSlider() {
             wrapper.style.transform = `translateX(-${(100 / totalSlides) * currentSlide}%)`;
             dots.forEach((dot, index) => {
@@ -329,20 +351,22 @@
     });
 </script>
 <script>
-  const slider = document.getElementById("ajioSlider");
-  const nextBtn = document.getElementById("ajioNext");
-  const prevBtn = document.getElementById("ajioPrev");
+  document.querySelectorAll('.ajio-slider-wrapper').forEach(wrapper => {
+    const slider = wrapper.querySelector('.ajio-slider');
+    const prevBtn = wrapper.querySelector('.ajio-prev');
+    const nextBtn = wrapper.querySelector('.ajio-next');
+    const scrollAmount = 420;
 
-  const scrollAmount = 420;
+    nextBtn.addEventListener("click", () => {
+      slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
 
-  nextBtn.addEventListener("click", () => {
-    slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  });
-
-  prevBtn.addEventListener("click", () => {
-    slider.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    prevBtn.addEventListener("click", () => {
+      slider.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
   });
 </script>
+
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.promo-slide');
@@ -434,13 +458,24 @@
         }
     }
 </script>
+</div>
 <script>
-    window.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            const loader = document.getElementById('ajio-loader');
-            if(loader) loader.style.display = 'none';
-        }, 1500);
-    });
+  // Loader hide logic
+  document.addEventListener('DOMContentLoaded', function () {
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () {
+      const loader = document.getElementById('ajio-loader');
+      const mainContent = document.getElementById('main-content');
+      if (loader) loader.style.display = 'none';
+      if (mainContent) mainContent.style.display = 'block';
+      document.body.style.overflow = '';
+    }, 1500);
+  });
+</script>
+<script>
+  if (window.initializeNavbar) {
+    window.initializeNavbar();
+  }
 </script>
 </body>
 </html>
