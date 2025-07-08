@@ -11,6 +11,14 @@
 </head>
 
 <body>
+    <!-- Loader Start -->
+    <div id="ajio-loader">
+        <div class="ajio-loader-content">
+            <div class="ajio-spinner"></div>
+            <div class="ajio-loader-text">AJIO</div>
+        </div>
+    </div>
+    <!-- Loader End -->
     <!-- navbar -->
     <div id="Nav"></div>
     <!-- navbar -->
@@ -303,6 +311,8 @@
             dots.push(dot);
         }
 
+
+        
         function updateSlider() {
             wrapper.style.transform = `translateX(-${(100 / totalSlides) * currentSlide}%)`;
             dots.forEach((dot, index) => {
@@ -424,6 +434,13 @@
         }
     }
 </script>
-
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            const loader = document.getElementById('ajio-loader');
+            if(loader) loader.style.display = 'none';
+        }, 1500);
+    });
+</script>
 </body>
 </html>
