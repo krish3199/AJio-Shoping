@@ -477,5 +477,16 @@
     window.initializeNavbar();
   }
 </script>
+<script>
+  // Make all slider images open card.html on click
+  document.querySelectorAll(
+    '.slider-container .slide img, .ajio-slider img'
+  ).forEach(function(img) {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+      window.location.href = 'card.html';
+    });
+  });
+</script>
 </body>
 </html>
