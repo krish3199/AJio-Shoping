@@ -375,11 +375,13 @@ function nav() {
                 </div>
                 
                 <!-- Hamburger Menu -->
+
                 <div class="hamburger" id="hamburgerBtn">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
+
                 
                 <!-- Mobile Menu -->
                 <div class="mobile-menu" id="mobileMenu">

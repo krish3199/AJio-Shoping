@@ -13,25 +13,115 @@
   <div id="Nav"></div>
   <div class="container">
     <!-- Left Filters -->
-    <aside class="filters">
-      <h3>Refine By <span>&#8964;</span></h3>
-      <div class="filter-section">+ Gender</div>
-      <div class="filter-section">+ Category</div>
-      <div class="filter-section">+ Price</div>
-      <div class="filter-section">+ Brands</div>
-      <div class="filter-section">+ Occasion</div>
-      <div class="filter-section">+ Discount</div>
-      <div class="filter-section">+ Colors</div>
-      <div class="filter-section">+ Size & Fit</div>
-      <div class="filter-section">+ Tags</div>
-      <div class="filter-section">+ Rating</div>
-
-      <div class="more-filters">
-        More Filters <span style="float: right;">&#8964;</span>
-        <small>Please select up to 3 categories to view more filters</small>
-      </div>
-      <button class="select-category-btn">SELECT CATEGORY</button>
-    </aside>
+    <aside class="sidebar">
+        <div class="filter-section">
+          <h3 class="filter-title">Refine By</h3>
+          <div class="filter-section">
+            <h4 class="filter-title">Gender</h4>
+            <ul class="filter-options">
+              <li>
+                <input type="checkbox" id="women" />
+                <label for="women"
+                  >Women <span class="count">(1,385,382)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="men" />
+                <label for="men"
+                  >Men <span class="count">(655,548)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="home" />
+                <label for="home"
+                  >Home & Kitchen <span class="count">(152,200)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="girls" />
+                <label for="girls"
+                  >Girls <span class="count">(103,855)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="boys" />
+                <label for="boys"
+                  >Boys <span class="count">(95,602)</span></label
+                >
+              </li>
+            </ul>
+            <a href="#" class="more-link">MORE</a>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Category</h4>
+            <ul class="filter-options">
+              <li>
+                <input type="checkbox" id="tshirts" />
+                <label for="tshirts"
+                  >T-shirts <span class="count">(313,132)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="sarees" />
+                <label for="sarees"
+                  >Sarees <span class="count">(186,223)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="shirts" />
+                <label for="shirts"
+                  >Shirts <span class="count">(146,175)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="tops" />
+                <label for="tops"
+                  >Shirts, Tops & Tunics
+                  <span class="count">(97,845)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="kurta" />
+                <label for="kurta"
+                  >Kurta Suit Sets <span class="count">(95,602)</span></label
+                >
+              </li>
+            </ul>
+            <a href="#" class="more-link">MORE</a>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Price</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Brands</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Occasion</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Discount</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Colors</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Size & Fit</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Tags</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Rating</h4>
+          </div>
+          <div class="more-filters">
+            <h4 class="filter-title">More Filters</h4>
+            <p style="font-size: 12px; color: #666; margin-bottom: 10px">
+              Please select upto 3 categories to view more filters
+            </p>
+            <button class="select-category-btn">SELECT CATEGORY</button>
+          </div>
+        </div>
+      </aside>
 
     <!-- Right Product Section -->
     <main class="main-section">
@@ -64,21 +154,21 @@
       let cardDetail = [
         {
             id : "1",
-            img : "https://assets.ajio.com/medias/sys_master/root/20241115/8eNy/6736f0c8c148fa1b30c9d9c7/-473Wx593H-469685452-grey-MODEL.jpg",
+            img : "https://assets.ajio.com/medias/sys_master/root/20250113/5xnC/67852fa8663dbe1c5fd493df/-473Wx593H-701052176-blue-MODEL.jpg",
             title : "ASOS DESIGN",
             about : "Cotton Straight Fit Chinos",
             star : "5 ★ | 2",
-            price : "₹1,125 ",
+            price : "₹10,125 ",
             strike : "₹2,499",
             off : "(55% off)"
         },
         {
             id : "2",
-            img : "https://assets.ajio.com/medias/sys_master/root/20241025/gihz/671b1f8d260f9c41e89caba4/-473Wx593H-469682260-denimblue-MODEL.jpg",
+            img : "https://assets.ajio.com/medias/sys_master/root/20240626/DusC/667b25fc1d763220fa221042/-473Wx593H-700129781-green-MODEL.jpg",
             title : "ASOS DESIGN",
             about : "Cotton Straight Fit ChinosMen Mid-Wash Classic Rigid Tapered Fit Jeans",
             star : "3.9 ★ | 15",
-            price : "₹1,125 ",
+            price : "₹8,125 ",
             strike : "₹2,499",
             off : "(55% off)"
         },
@@ -152,6 +242,76 @@
             strike : "₹2,499",
             off : "(55% off)"
         },
+        {
+            id : "10",
+            img : "https://assets.ajio.com/medias/sys_master/root/20240311/BItp/65ef1a2b05ac7d77bba99c6f/-473Wx593H-467154009-multi-MODEL.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "5 ★ | 2",
+            price : "₹580 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
+        {
+            id : "11",
+            img : "https://assets.ajio.com/medias/sys_master/root/20250211/AYlK/67aa560bbc78b543a934e31b/18india_wine_women_embroidered_straight_kurta_set.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "3 ★ | 2",
+            price : "₹1,376 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
+        {
+            id : "12",
+            img : "https://assets.ajio.com/medias/sys_master/root/20241115/xZvx/6736d0f1c148fa1b30c9880c/red_tape_blue_men_colourblock_lace-up_shoes.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "5 ★ | 2",
+            price : "₹528 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
+        {
+            id : "13",
+            img : "https://assets.ajio.com/medias/sys_master/root/20241014/NOHq/670cebac260f9c41e87619c0/red_tape_black_men_low-top_lace-up_walking_shoes.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "5 ★ | 2",
+            price : "₹1,125 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
+        {
+            id : "14",
+            img : "https://assets.sheinindia.in/medias/shein_sys_master/root/20250618/inBa/685297537a6cd4182fbce0a5/-473Wx593H-443316099-white-MODEL.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "5 ★ | 2",
+            price : "₹1,125 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
+        {
+            id : "15",
+            img : "https://assets.sheinindia.in/medias/shein_sys_master/root/20250122/QaNI/6790d9320431850e0db5e519/-473Wx593H-443316085-navy-MODEL.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "5 ★ | 2",
+            price : "₹1009 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
+        {
+            id : "16",
+            img : "https://assets.ajio.com/medias/sys_master/root/20250627/9vKA/685e84e02b1ad9265b70f2a8/-473Wx593H-701125954-purple-MODEL.jpg",
+            title : "ASOS DESIGN",
+            about : "Cotton Straight Fit Chinos",
+            star : "5 ★ | 2",
+            price : "₹6,799 ",
+            strike : "₹2,499",
+            off : "(55% off)"
+        },
       ]
       for (let i = 0; i < cardDetail.length; i++) {
          let product = document.getElementById("products")
@@ -173,6 +333,7 @@
   <script type="module">
     import nav from './navbar.js';
     document.getElementById("Nav").appendChild(nav());
+    window.initializeNavbar()
   </script>
 </body>
 </html>
