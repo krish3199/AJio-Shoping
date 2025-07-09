@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Clothes in Ajio Shop 55% Off</title>
+    <link rel="shortcut icon" href="https://img.utdstc.com/icon/b7e/c6b/b7ec6bcad19a722c6f27fb3297d7ae074982d7915c421d541f5e07072fe654a9:200" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <div id="Nav"></div>
+  
+  <div id="products"></div>
+
+    <script>
+
+      let cart = JSON.parse(localStorage.getItem("cardDetail"))
+      
+      let products = document.getElementById("products")
+      cart.forEach((e)=>{
+      products.innerHTML = `
+      <div class="containerr">
+      <div class="product-section">
+        <div class="product-images">
+          <div class="main-image-container" id="main">
+            <div class="bestseller-badge">BESTSELLER</div>
+            <img src="${e.img}" alt="Floral Print Bedsheet"
+            class="main-image"/>  
+          </div>
+        </div>
+
+        <div class="product-details">
+          <div class="brand-name">${e.title}</div>
+          <h1 class="product-title">${e.about}</h1>
+
+          <div class="rating-section">
+            <div class="rating-badge">
+              <span>★</span>
+              <span>${e.star}</span>
+            </div>
+            <span class="rating-count">1.6K Ratings</span>
+          </div>
+
+          <div class="price-section">
+            <div class="current-price">${e.price}</div>
+            <div class="price-details">
+              MRP <span class="original-price">${e.strike}</span>
+              <span class="discount">${e.off}</span>
+            </div>
+            <div class="price-details">Price inclusive of all taxes</div>
+          </div>
+
+          <div class="offer-section">
+            <div class="offer-item">
+              <div class="offer-icon">%</div>
+              <div>
+                <strong>Get it for ₹406</strong><br />
+                <small>Use Code NEW30</small>
+              </div>
+            </div>
+            <div class="offer-item">
+              <div class="offer-icon">%</div>
+              <div>
+                <small
+                  >Get Flat 30% off upto 500
+                  <span style="color: #007bff; text-decoration: underline"
+                    >View All Products></span
+                  ></small
+                >
+              </div>
+            </div>
+            <div class="more-offers">+4 More</div>
+          </div>
+
+          <div class="color-section">
+            <div class="section-label">Multi</div>
+            <div class="color-options">
+              <div class="color-option1"></div>
+              <div class="color-option2"></div>
+              <div class="color-option3"></div>
+              <div class="color-option4"></div>
+              <div class="color-option5"></div>
+            </div>
+          </div>
+
+          <div class="size-section">
+            <div class="section-label">Select Size</div>
+            <div class="custom-select-wrapper">
+              <select class="custom-select">
+                <option>OS</option>
+                <option>Large</option>
+                <option>Small</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pincode-section">
+            <div class="pincode-input">
+              <span>📍</span>
+              <span>Enter Pin-code To Know Estimated Delivery Date</span>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="add-to-bag">
+              <span>🛍️</span>
+              ADD TO BAG
+            </button>
+            <div class="quality-text">HANDPICKED STYLES | ASSURED QUALITY</div>
+
+            <button class="wishlist-btn">
+              <span class="heart-icon">♡</span>
+              SAVE TO WISHLIST
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`
+      })
+    </script>
+    <script type="module">
+        import nav from './navbar.js'
+        document.getElementById("Nav").appendChild(nav());
+        window.initializeNavbar();
+    </script>
+  </body>
+</html>

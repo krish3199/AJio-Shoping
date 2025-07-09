@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="https://img.utdstc.com/icon/b7e/c6b/b7ec6bcad19a722c6f27fb3297d7ae074982d7915c421d541f5e07072fe654a9:200" type="image/x-icon">
+    <title>Min 70 Percent Off</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -149,6 +150,7 @@
       </div>
     </main>
   </div>
+    <div id="Footer"></div> 
 
   <script>
       let cardDetail = [
@@ -313,6 +315,7 @@
             off : "(55% off)"
         },
       ]
+      let cards = []
       for (let i = 0; i < cardDetail.length; i++) {
          let product = document.getElementById("products")
          let card = document.createElement("div")
@@ -320,20 +323,29 @@
          product.appendChild(card)
          card.innerHTML = `
          <div class="imge">
+          <a href="./cart.html" target="_blank">
             <img src=${cardDetail[i].img} alt="Product" />
             <button>QUICK VIEW</button>
+          </a>
         </div>
          <h4>${cardDetail[i].title}</h4>
          <p>${cardDetail[i].about}</p>
          <div class="rating">${cardDetail[i].star}</div>
          <div class="price">${cardDetail[i].price} <span class="strike">${cardDetail[i].strike}</span> <span class="off">${cardDetail[i].off}</span></div>
          `
+        card.querySelector(".imge").addEventListener("click", function(){
+            cards.push(cardDetail[i])
+            localStorage.setItem("cardDetail" , JSON.stringify(cards))
+        })
       }
+
   </script>
   <script type="module">
     import nav from './navbar.js';
     document.getElementById("Nav").appendChild(nav());
     window.initializeNavbar()
+    import footer from './footer.js'
+    document.getElementById("Footer").appendChild(footer())
   </script>
 </body>
 </html>

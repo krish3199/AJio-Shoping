@@ -376,12 +376,19 @@ function nav() {
                 
                 <!-- Hamburger Menu -->
 
-                <div class="hamburger" id="hamburgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+               <div class="menu">
+                  <!-- Hamburger Menu -->
+                  <div class="hamburger" id="hamburgerBtn">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
 
+                  <!-- Cart Icon -->
+                  <a href="#" class="icon-links" id="cartIcon" title="Shopping Bag">
+                      <i class="ri-shopping-bag-line"></i>
+                  </a>
+                </div>
                 
                 <!-- Mobile Menu -->
                 <div class="mobile-menu" id="mobileMenu">
