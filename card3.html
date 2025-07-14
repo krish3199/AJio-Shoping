@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://img.utdstc.com/icon/b7e/c6b/b7ec6bcad19a722c6f27fb3297d7ae074982d7915c421d541f5e07072fe654a9:200" type="image/x-icon">
+    <title>Min 70 Percent Off</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="Nav"></div>
+  <div class="container">
+    <!-- Left Filters -->
+    <aside class="sidebar">
+        <div class="filter-section">
+          <h3 class="filter-title">Refine By</h3>
+          <div class="filter-section">
+            <h4 class="filter-title">Gender</h4>
+            <ul class="filter-options">
+              <li>
+                <input type="checkbox" id="women" />
+                <label for="women"
+                  >Women <span class="count">(1,385,382)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="men" />
+                <label for="men"
+                  >Men <span class="count">(655,548)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="home" />
+                <label for="home"
+                  >Home & Kitchen <span class="count">(152,200)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="girls" />
+                <label for="girls"
+                  >Girls <span class="count">(103,855)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="boys" />
+                <label for="boys"
+                  >Boys <span class="count">(95,602)</span></label
+                >
+              </li>
+            </ul>
+            <a href="#" class="more-link">MORE</a>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Category</h4>
+            <ul class="filter-options">
+              <li>
+                <input type="checkbox" id="tshirts" />
+                <label for="tshirts"
+                  >T-shirts <span class="count">(313,132)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="sarees" />
+                <label for="sarees"
+                  >Sarees <span class="count">(186,223)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="shirts" />
+                <label for="shirts"
+                  >Shirts <span class="count">(146,175)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="tops" />
+                <label for="tops"
+                  >Shirts, Tops & Tunics
+                  <span class="count">(97,845)</span></label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="kurta" />
+                <label for="kurta"
+                  >Kurta Suit Sets <span class="count">(95,602)</span></label
+                >
+              </li>
+            </ul>
+            <a href="#" class="more-link">MORE</a>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Price</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Brands</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Occasion</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Discount</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Colors</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Size & Fit</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Tags</h4>
+          </div>
+          <div class="filter-section">
+            <h4 class="filter-title">Rating</h4>
+          </div>
+          <div class="more-filters">
+            <h4 class="filter-title">More Filters</h4>
+            <p style="font-size: 12px; color: #666; margin-bottom: 10px">
+              Please select upto 3 categories to view more filters
+            </p>
+            <button class="select-category-btn">SELECT CATEGORY</button>
+          </div>
+        </div>
+      </aside>
+
+    <!-- Right Product Section -->
+    <main class="main-section">
+      <div class="topbar">
+        <p>5,222 Items Found</p>
+        <div class="grid-sort">
+          <span>GRID</span>
+          <div class="grid-icons">
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+            <div class="grid-box"></div>
+          </div>
+          <span>SORT BY</span>
+          <select>
+            <option>Relevance</option>
+            <option>Price Low to High</option>
+            <option>Price High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <h1 class="page-title">Min 55 Percent Off</h1>
+
+      <div class="product-grid" id="products">
+      </div>
+    </main>
+  </div>
+    <div id="Footer"></div> 
+
+  <script>
+let cardDetail = [
+  {
+    id: "1",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250317/IV0h/67d7eef259f83539803cadce/zari_black_women_embroidered_straight_kurta_set.jpg",
+    title: "Urban Vogue",
+    about: "High-Waist Flared Trousers",
+    star: "4.7 ★ | 324",
+    price: "₹8,999",
+    strike: "₹17,998",
+    off: "(50% off)"
+  },
+  {
+    id: "2",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250317/wUOV/67d838232960820c49f49be8/-473Wx593H-701344512-peach-MODEL.jpg",
+    title: "StyleCasa",
+    about: "Ruched Bodycon Midi Dress",
+    star: "4.8 ★ | 210",
+    price: "₹5,490",
+    strike: "₹10,980",
+    off: "(50% off)"
+  },
+  {
+    id: "3",
+    img: "https://assets.ajio.com/medias/sys_master/root/20241122/x2sZ/67401a35c148fa1b30df5dce/-473Wx593H-700785182-white-MODEL.jpg",
+    title: "DenimRoot",
+    about: "Mid-Rise Distressed Skinny Jeans",
+    star: "4.6 ★ | 412",
+    price: "₹6,299",
+    strike: "₹12,599",
+    off: "(50% off)"
+  },
+  {
+    id: "4",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250317/Ju2G/67d7f07d2960820c49efd987/-473Wx593H-701345676-orange-MODEL.jpg",
+    title: "ModStreet",
+    about: "Textured Puff Sleeve Top",
+    star: "4.4 ★ | 189",
+    price: "₹2,699",
+    strike: "₹5,399",
+    off: "(50% off)"
+  },
+  {
+    id: "5",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250604/tPqr/683ffc177a6cd4182f81a64a/-473Wx593H-701567363-coffee-MODEL.jpg",
+    title: "BloomWear",
+    about: "Smocked Floral Summer Dress",
+    star: "4.5 ★ | 261",
+    price: "₹4,250",
+    strike: "₹8,500",
+    off: "(50% off)"
+  },
+  {
+    id: "6",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250512/6Ohg/6821ebb955340d4b4f2e43c9/-473Wx593H-410518748-z023-MODEL.jpg",
+    title: "NextGen Style",
+    about: "Knitted Ribbed Crop Top",
+    star: "4.3 ★ | 179",
+    price: "₹1,290",
+    strike: "₹2,580",
+    off: "(50% off)"
+  },
+  {
+    id: "7",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250512/QMl3/682129437a6cd4182f27359e/-473Wx593H-701567363-teal-MODEL.jpg",
+    title: "PrimeWear",
+    about: "Structured Double-Breasted Blazer",
+    star: "4.6 ★ | 322",
+    price: "₹9,490",
+    strike: "₹18,980",
+    off: "(50% off)"
+  },
+  {
+    id: "8",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250422/ymTO/6807463b55340d4b4fee8705/-473Wx593H-467345982-mauve-MODEL.jpg",
+    title: "TrendMania",
+    about: "Button-Down Chambray Shirt",
+    star: "4.5 ★ | 198",
+    price: "₹3,299",
+    strike: "₹6,599",
+    off: "(50% off)"
+  },
+  {
+    id: "9",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230621/38xC/64928c45d55b7d0c6390b32c/-473Wx593H-464188082-grey-MODEL.jpg",
+    title: "VibeTown",
+    about: "Crew-Neck Printed Graphic Tee",
+    star: "4.7 ★ | 244",
+    price: "₹2,499",
+    strike: "₹4,999",
+    off: "(50% off)"
+  },
+  {
+    id: "10",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250607/SHLF/6843c78155340d4b4f8f1c46/-473Wx593H-701689045-beige-MODEL.jpg",
+    title: "ZenSport",
+    about: "Basic Stretch Fit Joggers",
+    star: "4.4 ★ | 135",
+    price: "₹3,750",
+    strike: "₹7,500",
+    off: "(50% off)"
+  },
+  {
+    id: "11",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250331/XIwU/67e9c66455340d4b4f9ca50e/-473Wx593H-701395275-beige-MODEL.jpg",
+    title: "Iconic Threads",
+    about: "Logo Embossed Slim Fit Tee",
+    star: "4.9 ★ | 291",
+    price: "₹6,999",
+    strike: "₹13,998",
+    off: "(50% off)"
+  },
+  {
+    id: "12",
+    img: "https://assets.ajio.com/medias/sys_master/root/20241216/YFUI/67602d2f0f47f80c8700850c/-473Wx593H-466987379-white-MODEL.jpg",
+    title: "AlphaMove",
+    about: "Relaxed Fit Sports Hoodie",
+    star: "4.6 ★ | 162",
+    price: "₹5,199",
+    strike: "₹10,398",
+    off: "(50% off)"
+  },
+  {
+    id: "13",
+    img: "https://assets.ajio.com/medias/sys_master/root/20241212/ze3C/675afc760f47f80c87f4fd01/-473Wx593H-700915291-teal-MODEL.jpg",
+    title: "Polostar",
+    about: "Cotton Polo Collar T-Shirt",
+    star: "4.3 ★ | 203",
+    price: "₹2,250",
+    strike: "₹4,500",
+    off: "(50% off)"
+  },
+  {
+    id: "14",
+    img: "https://assets.ajio.com/medias/sys_master/root/20221221/ptfA/63a32c38aeb269659cffe989/-473Wx593H-460812859-black-MODEL.jpg",
+    title: "FlexFit",
+    about: "Athletic Mesh Panel Tights",
+    star: "4.5 ★ | 112",
+    price: "₹1,750",
+    strike: "₹3,500",
+    off: "(50% off)"
+  },
+  {
+    id: "15",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250626/PcJm/685c52cd0f920c69cc577424/-473Wx593H-701820267-blue-MODEL.jpg",
+    title: "AirX",
+    about: "AirMax Breathable Running Shoes",
+    star: "4.8 ★ | 417",
+    price: "₹9,999",
+    strike: "₹19,998",
+    off: "(50% off)"
+  },
+  {
+    id: "16",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250617/LHig/6851616c55340d4b4fbb98aa/-473Wx593H-469724368-green-MODEL.jpg",
+    title: "ChillMate",
+    about: "Heritage Logo Hoodie",
+    star: "4.6 ★ | 97",
+    price: "₹4,599",
+    strike: "₹9,198",
+    off: "(50% off)"
+  }
+];
+
+
+
+      let cards = []
+      for (let i = 0; i < cardDetail.length; i++) {
+         let product = document.getElementById("products")
+         let card = document.createElement("div")
+         card.className = "product-card"
+         product.appendChild(card)
+         card.innerHTML = `
+         <div class="imge">
+          <a href="./cart.html" target="_blank">
+            <img src=${cardDetail[i].img} alt="Product" />
+            <button>QUICK VIEW</button>
+          </a>
+        </div>
+         <h4>${cardDetail[i].title}</h4>
+         <p>${cardDetail[i].about}</p>
+         <div class="rating">${cardDetail[i].star}</div>
+         <div class="price">${cardDetail[i].price} <span class="strike">${cardDetail[i].strike}</span> <span class="off">${cardDetail[i].off}</span></div>
+         `
+        card.querySelector(".imge").addEventListener("click", function(){
+            cards.push(cardDetail[i])
+            localStorage.setItem("cardDetail" , JSON.stringify(cards))
+        })
+      }
+
+  </script>
+  <script type="module">
+    import nav from './navbar.js';
+    document.getElementById("Nav").appendChild(nav());
+    window.initializeNavbar && window.initializeNavbar();
+    // Bag icon click event after navbar is rendered
+    const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+    if (bagIcon) {
+      bagIcon.style.cursor = 'pointer';
+      bagIcon.addEventListener('click', function() {
+        window.location.href = 'bag.html';
+      });
+    }
+    import footer from './footer.js';
+    document.getElementById("Footer").appendChild(footer());
+  </script>
+</body>
+</html>

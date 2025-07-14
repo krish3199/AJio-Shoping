@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bag - Shopping Cart</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="Nav"></div>
+    <div id="Footer"></div>
+    <div class="main-container">
+        <div class="cart-header">
+            <h1 class="cart-title">My Bag <span class="cart-count">(1 item)</span></h1>
+            <a href="#" class="wishlist-link">+ Add from Wishlist</a>
+        </div>
+
+        <div class="main-content">
+            <div class="cart-items">
+                <div class="cart-item">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20240311/BItp/65ef1a2b05ac7d77bba99c5e/-288Wx360H-467154009-multi-MODEL.jpg" alt="Jaipur Fabric Bedsheet" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">Jaipur Fabric - 150 GSM Floral Print Double Bedsheet with Pillow Covers</h3>
+                        <div class="item-specs">
+                            <span>Size: <strong>OS</strong></span>
+                            <span>Qty: <strong>1</strong></span>
+                        </div>
+                        <div class="item-pricing">
+                            <span class="original-price">Rs. 1,999.00</span>
+                            <span class="discount-badge">(71%)</span>
+                            <span class="sale-price">Rs. 580.00</span>
+                        </div>
+                        <div class="savings-text">Savings: Rs. 1,419.00</div>
+                        <div class="item-actions">
+                            <a href="#" class="action-link">Delete</a>
+                            <a href="#" class="action-link">♡ Move to Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h2 class="summary-title">Order Details</h2>
+                
+                <div class="summary-row">
+                    <span>Bag total</span>
+                    <span>₹1,999.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Bag discount</span>
+                    <span class="discount-amount">-₹1,419.00</span>
+                </div>
+                <div class="summary-row">
+                    <div class="convenience-fee">
+                        <span>Convenience Fee</span>
+                        <a href="#" class="info-link">What's this?</a>
+                    </div>
+                    <span>₹99.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span>Free</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Order Total</span>
+                    <span>₹679.00</span>
+                </div>
+
+                <button class="proceed-btn">PROCEED TO SHIPPING</button>
+
+                <div class="coupon-section">
+                    <h3 class="coupon-title">Apply Coupon</h3>
+                    <div class="coupon-input-group">
+                        <input type="text" class="coupon-input" placeholder="Enter coupon code">
+                        <button class="apply-btn">APPLY</button>
+                    </div>
+
+                    <div class="coupons-list">
+                        <h4 class="coupons-subtitle">Applicable Coupons</h4>
+                        
+                        <div class="coupon-item">
+                            <input type="radio" name="coupon" class="coupon-radio">
+                            <div class="coupon-details">
+                                <div class="coupon-savings">Savings: ₹174.00</div>
+                                <div class="coupon-code">NEW30</div>
+                                <div class="coupon-description">
+                                    Get Flat 30% off upto 500<br>
+                                    <a href="#" class="terms-link">View T & C</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="coupon-item">
+                            <input type="radio" name="coupon" class="coupon-radio">
+                            <div class="coupon-details">
+                                <div class="coupon-savings">Savings: ₹1.00</div>
+                                <div class="coupon-code">FREEDEL</div>
+                                <div class="coupon-description">
+                                    Free Shipping on 499 and above. Just for you.<br>
+                                    <a href="#" class="terms-link">View T & C</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="non-applicable">
+                            <h4 class="coupons-subtitle">Non - Applicable Coupons</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="return-policy">
+                    <h4 class="policy-title">Return/Refund policy</h4>
+                    <p class="policy-text">
+                        In case of return, we ensure quick refunds. Full amount will be refunded excluding Convenience Fee
+                    </p>
+                    <a href="#" class="policy-link">Read Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Badges Section -->
+    <div class="trust-badges">
+        <div class="trust-item">
+            <div class="trust-icon">🛡️</div>
+            <span>SECURE PAYMENTS</span>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">💰</div>
+            <span>CASH ON DELIVERY</span>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">⭐</div>
+            <span>ASSURED QUALITY</span>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">↩️</div>
+            <span>EASY RETURNS</span>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="feature-item">
+            <div class="feature-icon">🛍️</div>
+            <h3>EASY EXCHANGE</h3>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">❤️</div>
+            <h3>100% HANDPICKED</h3>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚙️</div>
+            <h3>ASSURED QUALITY</h3>
+        </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Ajio</h4>
+                <ul>
+                    <li><a href="#">Who We Are</a></li>
+                    <li><a href="#">Join Our Team</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">We Respect Your Privacy</a></li>
+                    <li><a href="#">Fees & Payments</a></li>
+                    <li><a href="#">Returns & Refunds Policy</a></li>
+                    <li><a href="#">Promotions Terms & Conditions</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="#">Frequently Asked Questions</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Cancellations</a></li>
+                    <li><a href="#">Payments</a></li>
+                    <li><a href="#">Customer Care</a></li>
+                    <li><a href="#">How Do I Redeem My Coupon</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Shop by</h4>
+                <ul>
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Kids</a></li>
+                    <li><a href="#">Indie</a></li>
+                    <li><a href="#">Stores</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Brand Directory</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Collections</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Follow us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram- AjioLife</a></li>
+                    <li><a href="#">Instagram- AJIO LUXE</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="payment-methods">
+                <h5>Payment methods</h5>
+                <div class="payment-icons">
+                    <span class="payment-icon">Net Banking</span>
+                    <span class="payment-icon">Verified by VISA</span>
+                    <span class="payment-icon">MasterCard</span>
+                    <span class="payment-icon">CASH ON DELIVERY</span>
+                    <span class="payment-icon">Jio Money</span>
+                </div>
+            </div>
+            <div class="secure-systems">
+                <h5>Secure systems</h5>
+                <div class="security-badge">
+                    <span>🔒 256 BIT SSL</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script type="module">
+  import nav from './navbar.js';
+  document.getElementById("Nav").appendChild(nav());
+  window.initializeNavbar && window.initializeNavbar();
+  const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+  if (bagIcon) {
+    bagIcon.style.cursor = 'pointer';
+    bagIcon.addEventListener('click', function() {
+      window.location.href = 'bag.html';
+    });
+  }
+ 
+</script>

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Fashion Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #282c3f;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: #ffffff;
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Section */
+        .header-section {
+            background-color: #ffffff;
+            padding: 32px 0;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* Top Bar */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            margin-bottom: 28px;
+            background-color: #fafafa;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .results-count {
+            font-size: 18px;
+            font-weight: 600;
+            color: #282c3f;
+        }
+        
+        .filter-sort-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .view-options {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .view-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #696b79;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .grid-toggle {
+            display: flex;
+            gap: 3px;
+            padding: 8px;
+            border: 1px solid #d4d5d9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #ffffff;
+        }
+        
+        .grid-toggle:hover {
+            border-color: #b0b0b0;
+            background-color: #f5f5f5;
+        }
+        
+        .grid-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #282c3f;
+            border-radius: 2px;
+        }
+        
+        .sort-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .sort-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #696b79;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .sort-dropdown {
+            padding: 10px 16px;
+            border: 1px solid #d4d5d9;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #ffffff;
+            color: #282c3f;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+            min-width: 160px;
+        }
+        
+        .sort-dropdown:hover,
+        .sort-dropdown:focus {
+            border-color: #b0b0b0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Page Title */
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 0;
+            text-align: left;
+            letter-spacing: -0.5px;
+            padding: 0 4px;
+        }
+        
+        /* Product Grid - EXACTLY 4 CARDS PER ROW */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* EXACTLY 4 CARDS */
+            gap: 20px;
+            padding: 0;
+        }
+        
+        /* Product Card - PERFECT SIZE */
+        .product-card {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid transparent;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 8px 24px rgba(40, 44, 63, 0.12);
+            border-color: #f0f0f0;
+            transform: translateY(-4px);
+        }
+        
+        /* Image Container */
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+        
+        /* Wishlist Button */
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            color: #282c3f;
+        }
+        
+        .product-card:hover .wishlist-btn {
+            opacity: 1;
+        }
+        
+        .wishlist-btn:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Quick View Button */
+        .quick-view-btn {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background-color: #282c3f;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(40, 44, 63, 0.3);
+        }
+        
+        .product-card:hover .quick-view-btn {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .quick-view-btn:hover {
+            background-color: #1a1d29;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 44, 63, 0.4);
+        }
+        
+        /* Product Info */
+        .product-info {
+            padding: 14px 10px 18px 10px;
+        }
+        
+        /* Brand Name */
+        .brand-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        /* Product Name */
+        .product-name {
+            font-size: 13px;
+            font-weight: 400;
+            color: #696b79;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 36px;
+        }
+        
+        /* Rating */
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 3px 6px;
+            background-color: #388e3c;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .rating-count {
+            font-size: 11px;
+            color: #696b79;
+            font-weight: 400;
+        }
+        
+        /* Price Section */
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .current-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #282c3f;
+        }
+        
+        .original-price {
+            font-size: 13px;
+            color: #696b79;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+        
+        .discount-percent {
+            font-size: 11px;
+            color: #ff6f61;
+            font-weight: 600;
+        }
+
+        /* Product Details */
+        .product-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+        }
+
+        .detail-tag {
+            font-size: 10px;
+            color: #696b79;
+            background-color: #f5f5f6;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        
+        /* RESPONSIVE - EXACTLY AS REQUESTED */
+        /* Large Desktop - 4 CARDS */
+        @media (min-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+            }
+            
+            .product-image {
+                height: 380px;
+            }
+        }
+        
+        /* Medium Desktop - 4 CARDS */
+        @media (max-width: 1199px) and (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .product-image {
+                height: 320px;
+            }
+        }
+        
+        /* Tablet - 3 CARDS */
+        @media (max-width: 991px) and (min-width: 768px) {
+            .container {
+                margin-top: 20px;
+                padding: 0 16px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            
+            .product-image {
+                height: 280px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+                padding: 20px 16px;
+            }
+            
+            .filter-sort-section {
+                width: 100%;
+                justify-content: space-between;
+                gap: 20px;
+            }
+        }
+        
+        /* Mobile - 2 CARDS */
+        @media (max-width: 767px) {
+            .container {
+                margin-top: 20px;
+                padding: 0 12px;
+            }
+            
+            .header-section {
+                padding: 24px 0;
+                margin-bottom: 32px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+            
+            .product-info {
+                padding: 10px 8px 14px 8px;
+            }
+            
+            .brand-name {
+                font-size: 11px;
+            }
+            
+            .product-name {
+                font-size: 12px;
+                height: 32px;
+            }
+            
+            .current-price {
+                font-size: 14px;
+            }
+            
+            .original-price {
+                font-size: 12px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+                padding: 16px 12px;
+            }
+            
+            .filter-sort-section {
+                width: 100%;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .detail-tag {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
+        }
+        
+        /* Loading Animation */
+        .product-card {
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: calc(var(--i, 0) * 0.08s);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Selection */
+        ::selection {
+            background-color: #282c3f;
+            color: #ffffff;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4d5d9;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b0b0b0;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div id="Nav"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="topbar">
+                <div class="results-count">4,856 Items</div>
+                <div class="filter-sort-section">
+                    <div class="view-options">
+                        <span class="view-text">View</span>
+                        <div class="grid-toggle">
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                        </div>
+                    </div>
+                    <div class="sort-section">
+                        <span class="sort-label">Sort By</span>
+                        <select class="sort-dropdown">
+                            <option>Relevance</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest First</option>
+                            <option>Popularity</option>
+                            <option>Discount</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <h1 class="page-title">Women's Fashion Sale - Min 50% Off</h1>
+        </div>
+        
+        <!-- Product Grid Section -->
+        <div class="product-section">
+            <div class="product-grid" id="products"></div>
+        </div>
+    </div>
+    
+    <div id="Footer"></div>
+    
+    <script>
+        let cardDetail = [
+            {
+                id: "1",
+                img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=500&fit=crop&crop=center",
+                brand: "ZARA",
+                name: "Women's Floral Print Midi Dress",
+                rating: "4.3",
+                reviews: "234",
+                currentPrice: "₹1,599",
+                originalPrice: "₹3,199",
+                discount: "(50% off)",
+                details: ["Floral Print", "Midi Length", "V-Neck", "Sleeveless"]
+            },
+            {
+                id: "2",
+                img: "https://images.unsplash.com/photo-1475180098004-ca77a66827be?w=400&h=500&fit=crop&crop=center",
+                brand: "H&M",
+                name: "Women's High-Waisted Skinny Jeans",
+                rating: "4.1",
+                reviews: "189",
+                currentPrice: "₹1,299",
+                originalPrice: "₹2,599",
+                discount: "(50% off)",
+                details: ["Skinny Fit", "High-Waisted", "Stretchable", "Ankle Length"]
+            },
+            {
+                id: "3",
+                img: "https://houseoffett.com/cdn/shop/files/shinu_doshi_1.jpg?v=1749818328&width=1800",
+                brand: "MANGO",
+                name: "Women's Oversized Blazer",
+                rating: "4.5",
+                reviews: "156",
+                currentPrice: "₹2,199",
+                originalPrice: "₹4,399",
+                discount: "(50% off)",
+                details: ["Oversized Fit", "Notch Lapel", "Double-Breasted", "Lined"]
+            },
+            {
+                id: "4",
+                img: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=500&fit=crop&crop=center",
+                brand: "FOREVER 21",
+                name: "Women's Crop Top with Puff Sleeves",
+                rating: "4.0",
+                reviews: "298",
+                currentPrice: "₹899",
+                originalPrice: "₹1,799",
+                discount: "(50% off)",
+                details: ["Crop Length", "Puff Sleeves", "Square Neck", "Cotton Blend"]
+            },
+            {
+                id: "5",
+                img: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=500&fit=crop&crop=center",
+                brand: "VERO MODA",
+                name: "Women's Maxi Dress with Belt",
+                rating: "4.4",
+                reviews: "167",
+                currentPrice: "₹1,799",
+                originalPrice: "₹3,599",
+                discount: "(50% off)",
+                details: ["Maxi Length", "Belted", "Flowy Fabric", "Full Sleeves"]
+            },
+            {
+                id: "6",
+                img: "https://images.unsplash.com/photo-1525450824786-227cbef70703?w=400&h=500&fit=crop&crop=center",
+                brand: "ONLY",
+                name: "Women's Denim Jacket",
+                rating: "4.2",
+                reviews: "134",
+                currentPrice: "₹1,499",
+                originalPrice: "₹2,999",
+                discount: "(50% off)",
+                details: ["Regular Fit", "Button Closure", "Washed Effect", "Multiple Pockets"]
+            },
+            {
+                id: "7",
+                img: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&h=500&fit=crop&crop=center",
+                brand: "BERSHKA",
+                name: "Women's Pleated Mini Skirt",
+                rating: "3.9",
+                reviews: "89",
+                currentPrice: "₹999",
+                originalPrice: "₹1,999",
+                discount: "(50% off)",
+                details: ["Pleated", "Mini Length", "High-Waisted", "A-Line"]
+            },
+            {
+                id: "8",
+                img: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop&crop=center",
+                brand: "STRADIVARIUS",
+                name: "Women's Knit Sweater",
+                rating: "4.3",
+                reviews: "245",
+                currentPrice: "₹1,399",
+                originalPrice: "₹2,799",
+                discount: "(50% off)",
+                details: ["Cable Knit", "Crew Neck", "Ribbed Cuffs", "Regular Fit"]
+            },
+            {
+                id: "9",
+                img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=500&fit=crop&crop=center",
+                brand: "CHARLES & KEITH",
+                name: "Women's Block Heel Sandals",
+                rating: "4.1",
+                reviews: "178",
+                currentPrice: "₹2,499",
+                originalPrice: "₹4,999",
+                discount: "(50% off)",
+                details: ["Block Heel", "Ankle Strap", "Open Toe", "Cushioned Insole"]
+            },
+            {
+                id: "10",
+                img: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=500&fit=crop&crop=center",
+                brand: "ALDO",
+                name: "Women's Crossbody Bag",
+                rating: "4.5",
+                reviews: "267",
+                currentPrice: "₹1,999",
+                originalPrice: "₹3,999",
+                discount: "(50% off)",
+                details: ["Crossbody", "Adjustable Strap", "Multiple Compartments", "Gold Hardware"]
+            },
+            {
+                id: "11",
+                img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=500&fit=crop&crop=center",
+                brand: "PULL & BEAR",
+                name: "Women's Graphic Print T-Shirt",
+                rating: "3.8",
+                reviews: "123",
+                currentPrice: "₹699",
+                originalPrice: "₹1,399",
+                discount: "(50% off)",
+                details: ["Graphic Print", "Crew Neck", "Cotton", "Regular Fit"]
+            },
+            {
+                id: "12",
+                img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=500&fit=crop&crop=center",
+                brand: "ZARA",
+                name: "Women's Wide-Leg Trousers",
+                rating: "4.2",
+                reviews: "198",
+                currentPrice: "₹1,799",
+                originalPrice: "₹3,599",
+                discount: "(50% off)",
+                details: ["Wide-Leg", "High-Waisted", "Pleated Front", "Ankle Length"]
+            },
+            {
+                id: "13",
+                img: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&h=500&fit=crop&crop=center",
+                brand: "H&M",
+                name: "Women's Ribbed Bodysuit",
+                rating: "4.0",
+                reviews: "156",
+                currentPrice: "₹899",
+                originalPrice: "₹1,799",
+                discount: "(50% off)",
+                details: ["Ribbed Texture", "Snap Closure", "Scoop Neck", "Sleeveless"]
+            },
+            {
+                id: "14",
+                img: "https://images.unsplash.com/photo-1536593998369-f0d25ed0fb1d?w=400&h=500&fit=crop&crop=center",
+                brand: "MANGO",
+                name: "Women's Leather Ankle Boots",
+                rating: "4.6",
+                reviews: "89",
+                currentPrice: "₹3,499",
+                originalPrice: "₹6,999",
+                discount: "(50% off)",
+                details: ["Genuine Leather", "Block Heel", "Side Zip", "Pointed Toe"]
+            },
+            {
+                id: "15",
+                img: "https://images.unsplash.com/photo-1475180098004-ca77a66827be?w=400&h=500&fit=crop&crop=center",
+                brand: "FOREVER 21",
+                name: "Women's Flare Jeans",
+                rating: "4.1",
+                reviews: "234",
+                currentPrice: "₹1,599",
+                originalPrice: "₹3,199",
+                discount: "(50% off)",
+                details: ["Flare Cut", "Mid-Rise", "Stretchable", "Full Length"]
+            },
+            {
+                id: "16",
+                img: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&h=500&fit=crop&crop=center",
+                brand: "VERO MODA",
+                name: "Women's Wrap Dress",
+                rating: "4.4",
+                reviews: "167",
+                currentPrice: "₹1,999",
+                originalPrice: "₹3,999",
+                discount: "(50% off)",
+                details: ["Wrap Style", "V-Neck", "Tie Closure", "Knee Length"]
+            },
+        ]
+        
+        // Generate product cards
+        for (let i = 0; i < cardDetail.length; i++) {
+            let product = document.getElementById("products")
+            let card = document.createElement("div")
+            card.className = "product-card"
+            card.style.setProperty('--i', i);
+            product.appendChild(card)
+            
+            // Create details HTML
+            let detailsHTML = '';
+            if (cardDetail[i].details && cardDetail[i].details.length > 0) {
+                detailsHTML = '<div class="product-details">';
+                cardDetail[i].details.forEach(detail => {
+                    detailsHTML += `<span class="detail-tag">${detail}</span>`;
+                });
+                detailsHTML += '</div>';
+            }
+            
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${cardDetail[i].img}" alt="${cardDetail[i].name}" />
+                    <button class="wishlist-btn">♡</button>
+                    <button class="quick-view-btn">Quick View</button>
+                </div>
+                <div class="product-info">
+                    <div class="brand-name">${cardDetail[i].brand}</div>
+                    <div class="product-name">${cardDetail[i].name}</div>
+                    <div class="rating-section">
+                        <div class="rating-stars">${cardDetail[i].rating} ★</div>
+                        <div class="rating-count">(${cardDetail[i].reviews})</div>
+                    </div>
+                    ${detailsHTML}
+                    <div class="price-section">
+                        <span class="current-price">${cardDetail[i].currentPrice}</span>
+                        <span class="original-price">${cardDetail[i].originalPrice}</span>
+                        <span class="discount-percent">${cardDetail[i].discount}</span>
+                    </div>
+                </div>
+            `
+        }
+        
+        // Add click events
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('wishlist-btn') && !e.target.classList.contains('quick-view-btn')) {
+                    console.log('Product clicked:', this.querySelector('.product-name').textContent);
+                }
+            });
+        });
+        
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.textContent = this.textContent === '♡' ? '♥' : '♡';
+                this.style.color = this.textContent === '♥' ? '#ff6f61' : '#282c3f';
+            });
+        });
+        
+        document.querySelectorAll('.quick-view-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Quick view clicked');
+            });
+        });
+    </script>
+    <script type="module">
+    import nav from './navbar.js';
+    document.getElementById("Nav").appendChild(nav());
+    window.initializeNavbar && window.initializeNavbar();
+    
+    // Bag icon click event after navbar is rendered
+    const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+    if (bagIcon) {
+      bagIcon.style.cursor = 'pointer';
+      bagIcon.addEventListener('click', function() {
+        window.location.href = 'bag.html';
+      });
+    }
+    
+    import footer from './footer.js';
+    document.getElementById("Footer").appendChild(footer());
+</script>
+</body>
+</html>

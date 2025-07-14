@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Kids Fashion Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #282c3f;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: #ffffff;
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Section */
+        .header-section {
+            background-color: #ffffff;
+            padding: 32px 0;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* Top Bar */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            margin-bottom: 28px;
+            background-color: #fafafa;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .results-count {
+            font-size: 18px;
+            font-weight: 600;
+            color: #282c3f;
+        }
+        
+        .filter-sort-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .view-options {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .view-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #696b79;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .grid-toggle {
+            display: flex;
+            gap: 3px;
+            padding: 8px;
+            border: 1px solid #d4d5d9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #ffffff;
+        }
+        
+        .grid-toggle:hover {
+            border-color: #b0b0b0;
+            background-color: #f5f5f5;
+        }
+        
+        .grid-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #282c3f;
+            border-radius: 2px;
+        }
+        
+        .sort-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .sort-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #696b79;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .sort-dropdown {
+            padding: 10px 16px;
+            border: 1px solid #d4d5d9;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #ffffff;
+            color: #282c3f;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+            min-width: 160px;
+        }
+        
+        .sort-dropdown:hover,
+        .sort-dropdown:focus {
+            border-color: #b0b0b0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Page Title */
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 0;
+            text-align: left;
+            letter-spacing: -0.5px;
+            padding: 0 4px;
+        }
+        
+        /* Product Grid - EXACTLY 4 CARDS PER ROW */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* EXACTLY 4 CARDS */
+            gap: 20px;
+            padding: 0;
+        }
+        
+        /* Product Card - PERFECT SIZE */
+        .product-card {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid transparent;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 8px 24px rgba(40, 44, 63, 0.12);
+            border-color: #f0f0f0;
+            transform: translateY(-4px);
+        }
+        
+        /* Image Container */
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+        
+        /* Wishlist Button */
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            color: #282c3f;
+        }
+        
+        .product-card:hover .wishlist-btn {
+            opacity: 1;
+        }
+        
+        .wishlist-btn:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Quick View Button */
+        .quick-view-btn {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background-color: #282c3f;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(40, 44, 63, 0.3);
+        }
+        
+        .product-card:hover .quick-view-btn {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .quick-view-btn:hover {
+            background-color: #1a1d29;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 44, 63, 0.4);
+        }
+        
+        /* Product Info */
+        .product-info {
+            padding: 14px 10px 18px 10px;
+        }
+        
+        /* Brand Name */
+        .brand-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        /* Product Name */
+        .product-name {
+            font-size: 13px;
+            font-weight: 400;
+            color: #696b79;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 36px;
+        }
+        
+        /* Rating */
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 3px 6px;
+            background-color: #388e3c;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .rating-count {
+            font-size: 11px;
+            color: #696b79;
+            font-weight: 400;
+        }
+        
+        /* Price Section */
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .current-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #282c3f;
+        }
+        
+        .original-price {
+            font-size: 13px;
+            color: #696b79;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+        
+        .discount-percent {
+            font-size: 11px;
+            color: #ff6f61;
+            font-weight: 600;
+        }
+
+        /* Product Details */
+        .product-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+        }
+
+        .detail-tag {
+            font-size: 10px;
+            color: #696b79;
+            background-color: #f5f5f6;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        
+        /* RESPONSIVE - EXACTLY AS REQUESTED */
+        /* Large Desktop - 4 CARDS */
+        @media (min-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+            }
+            
+            .product-image {
+                height: 380px;
+            }
+        }
+        
+        /* Medium Desktop - 4 CARDS */
+        @media (max-width: 1199px) and (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .product-image {
+                height: 320px;
+            }
+        }
+        
+        /* Tablet - 3 CARDS */
+        @media (max-width: 991px) and (min-width: 768px) {
+            .container {
+                margin-top: 20px;
+                padding: 0 16px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            
+            .product-image {
+                height: 280px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+                padding: 20px 16px;
+            }
+            
+            .filter-sort-section {
+                width: 100%;
+                justify-content: space-between;
+                gap: 20px;
+            }
+        }
+        
+        /* Mobile - 2 CARDS */
+        @media (max-width: 767px) {
+            .container {
+                margin-top: 20px;
+                padding: 0 12px;
+            }
+            
+            .header-section {
+                padding: 24px 0;
+                margin-bottom: 32px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+            
+            .product-info {
+                padding: 10px 8px 14px 8px;
+            }
+            
+            .brand-name {
+                font-size: 11px;
+            }
+            
+            .product-name {
+                font-size: 12px;
+                height: 32px;
+            }
+            
+            .current-price {
+                font-size: 14px;
+            }
+            
+            .original-price {
+                font-size: 12px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+                padding: 16px 12px;
+            }
+            
+            .filter-sort-section {
+                width: 100%;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .detail-tag {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
+        }
+        
+        /* Loading Animation */
+        .product-card {
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: calc(var(--i, 0) * 0.08s);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Selection */
+        ::selection {
+            background-color: #282c3f;
+            color: #ffffff;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4d5d9;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b0b0b0;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div id="Nav"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="topbar">
+                <div class="results-count">1,847 Items</div>
+                <div class="filter-sort-section">
+                    <div class="view-options">
+                        <span class="view-text">View</span>
+                        <div class="grid-toggle">
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                        </div>
+                    </div>
+                    <div class="sort-section">
+                        <span class="sort-label">Sort By</span>
+                        <select class="sort-dropdown">
+                            <option>Relevance</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest First</option>
+                            <option>Popularity</option>
+                            <option>Discount</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <h1 class="page-title">Premium Kids Designer Collection - Up to 40% Off</h1>
+        </div>
+        
+        <!-- Product Grid Section -->
+        <div class="product-section">
+            <div class="product-grid" id="products"></div>
+        </div>
+    </div>
+    
+    <div id="Footer"></div>
+    
+    <script>
+        let cardDetail = [
+            {
+                id: "1",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250709/JsBL/686e30f1e590ff066e3487be/-473Wx593H-701815943-multi-MODEL.jpg",
+                brand: "DISNEY COUTURE",
+                name: "Premium Mickey Mouse Organic Cotton Designer T-Shirt",
+                rating: "4.8",
+                reviews: "524",
+                currentPrice: "₹1,899",
+                originalPrice: "₹3,199",
+                discount: "(40% off)",
+                details: ["Organic Cotton", "GOTS Certified", "Hand Embroidered", "Age 2-8 Years"]
+            },
+            {
+                id: "2",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250530/H7O1/6839401e55340d4b4f6edcda/-473Wx593H-701648557-multi-MODEL.jpg",
+                brand: "BARBIE LUXURY",
+                name: "Girls Designer Princess Tulle Dress with Swarovski Crystals",
+                rating: "4.9",
+                reviews: "367",
+                currentPrice: "₹3,599",
+                originalPrice: "₹5,999",
+                discount: "(40% off)",
+                details: ["Swarovski Crystals", "French Tulle", "Hand Sewn", "Age 3-10 Years"]
+            },
+            {
+                id: "3",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250419/ZywA/68029b7955340d4b4fe7bd26/-473Wx593H-701475325-blue-MODEL.jpg",
+                brand: "DC PREMIUM",
+                name: "Boys Limited Edition Superman Cape Set with LED Technology",
+                rating: "4.7",
+                reviews: "289",
+                currentPrice: "₹2,799",
+                originalPrice: "₹4,699",
+                discount: "(40% off)",
+                details: ["LED Cape", "Muscle Padding", "Premium Lycra", "Age 4-12 Years"]
+            },
+            {
+                id: "4",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250319/ZZGR/67dacaec59f8353980496d68/-473Wx593H-701355765-navy-MODEL.jpg",
+                brand: "PEPPA PIG DELUXE",
+                name: "Toddler Designer Peppa Pig Dungaree with Educational Elements",
+                rating: "4.6",
+                reviews: "412",
+                currentPrice: "₹2,199",
+                originalPrice: "₹3,699",
+                discount: "(40% off)",
+                details: ["Educational Print", "Bamboo Fiber", "Growth Chart", "Age 1-4 Years"]
+            },
+            {
+                id: "5",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250417/Ou05/6801058b7a6cd4182fd9bbe6/-473Wx593H-701468931-blue-MODEL.jpg",
+                brand: "MARVEL ELITE",
+                name: "Boys Premium Spiderman Hoodie with 3D Web Technology",
+                rating: "4.8",
+                reviews: "256",
+                currentPrice: "₹3,999",
+                originalPrice: "₹6,699",
+                discount: "(40% off)",
+                details: ["3D Web Print", "Thermal Lining", "Smart Fabric", "Age 5-12 Years"]
+            },
+            {
+                id: "6",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250506/wNRg/681940e255340d4b4f1704e0/-473Wx593H-701533422-yellow-MODEL.jpg",
+                brand: "FROZEN COUTURE",
+                name: "Girls Elsa Designer Leggings with Temperature Control",
+                rating: "4.5",
+                reviews: "398",
+                currentPrice: "₹1,799",
+                originalPrice: "₹2,999",
+                discount: "(40% off)",
+                details: ["Temperature Control", "Moisture Wicking", "4-Way Stretch", "Age 3-8 Years"]
+            },
+            {
+                id: "7",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250623/tB3y/685961020f920c69cc495dec/-473Wx593H-701802341-grey-MODEL.jpg",
+                brand: "POKEMON PREMIUM",
+                name: "Boys Limited Edition Pikachu Interactive Shorts Set",
+                rating: "4.4",
+                reviews: "334",
+                currentPrice: "₹2,299",
+                originalPrice: "₹3,849",
+                discount: "(40% off)",
+                details: ["Interactive Sound", "UV Protection", "Quick Dry", "Age 4-10 Years"]
+            },
+            {
+                id: "8",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250527/rLwA/6835f23a7a6cd4182f5da765/-473Wx593H-701601595-beige-MODEL.jpg",
+                brand: "HELLO KITTY LUXURY",
+                name: "Girls Designer Hello Kitty Silk Bow Headband Collection",
+                rating: "4.9",
+                reviews: "287",
+                currentPrice: "₹1,299",
+                originalPrice: "₹2,199",
+                discount: "(40% off)",
+                details: ["Pure Silk", "Hand Crafted", "Gift Box", "Age 2-12 Years"]
+            },
+            {
+                id: "9",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250514/Wbhw/6823b3bb7a6cd4182f2e44de/-473Wx593H-701574653-white-MODEL.jpg",
+                brand: "CARS PREMIUM",
+                name: "Boys Lightning McQueen Smart Racing Shoes with GPS",
+                rating: "4.6",
+                reviews: "445",
+                currentPrice: "₹4,999",
+                originalPrice: "₹8,349",
+                discount: "(40% off)",
+                details: ["GPS Tracker", "LED Lights", "Memory Foam", "Size 6-12"]
+            },
+            {
+                id: "10",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250611/eHvD/684963da7a6cd4182f9d8e50/-473Wx593H-701720882-black-MODEL.jpg",
+                brand: "UNICORN DELUXE",
+                name: "Girls Designer Rainbow Unicorn Smart Backpack with Tracker",
+                rating: "4.7",
+                reviews: "356",
+                currentPrice: "₹3,799",
+                originalPrice: "₹6,349",
+                discount: "(40% off)",
+                details: ["GPS Tracker", "LED Horn", "Water Resistant", "Age 4-10 Years"]
+            },
+            {
+                id: "11",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250506/6NFX/6819421955340d4b4f173076/-473Wx593H-701533457-pink-MODEL.jpg",
+                brand: "MINIONS LUXURY",
+                name: "Boys Premium Minions Bamboo Fiber Pajama Set",
+                rating: "4.5",
+                reviews: "278",
+                currentPrice: "₹2,499",
+                originalPrice: "₹4,199",
+                discount: "(40% off)",
+                details: ["Bamboo Fiber", "Anti-Bacterial", "Temperature Control", "Age 3-9 Years"]
+            },
+            {
+                id: "12",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250319/OGeW/67daca8d2960820c49fbc813/-473Wx593H-701355800-cream-MODEL.jpg",
+                brand: "DORA EXPLORER",
+                name: "Girls Designer Dora Adventure Dress with Educational Map",
+                rating: "4.6",
+                reviews: "389",
+                currentPrice: "₹2,899",
+                originalPrice: "₹4,849",
+                discount: "(40% off)",
+                details: ["Interactive Map", "Educational Print", "Wrinkle Free", "Age 2-7 Years"]
+            },
+            {
+                id: "13",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250603/H8JC/683ea8dd55340d4b4f7f233d/-473Wx593H-701668958-yellow-MODEL.jpg",
+                brand: "BEN 10 ULTIMATE",
+                name: "Boys Premium Ben 10 Omnitrix Watch T-Shirt with Sound",
+                rating: "4.7",
+                reviews: "567",
+                currentPrice: "₹1,999",
+                originalPrice: "₹3,349",
+                discount: "(40% off)",
+                details: ["Sound Effects", "Glow in Dark", "Moisture Wicking", "Age 5-12 Years"]
+            },
+            {
+                id: "14",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250511/6gjH/6820d8e27a6cd4182f261bdd/-473Wx593H-701564760-pink-MODEL.jpg",
+                brand: "PRINCESS ROYAL",
+                name: "Girls Royal Princess Crown Hair Clips with Real Gems",
+                rating: "4.8",
+                reviews: "423",
+                currentPrice: "₹1,599",
+                originalPrice: "₹2,699",
+                discount: "(40% off)",
+                details: ["Real Gems", "24K Gold Plated", "Luxury Box", "Age 3-10 Years"]
+            },
+            {
+                id: "15",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250617/l61v/685173b87a6cd4182fb9fd7c/-473Wx593H-701759601-mauve-MODEL.jpg",
+                brand: "TMNT ELITE",
+                name: "Boys Designer TMNT Tactical Cargo Pants with Tech Pockets",
+                rating: "4.4",
+                reviews: "312",
+                currentPrice: "₹3,299",
+                originalPrice: "₹5,549",
+                discount: "(40% off)",
+                details: ["Tech Pockets", "Reinforced Knees", "Water Resistant", "Age 4-11 Years"]
+            },
+            {
+                id: "16",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250710/gFKq/686f60f3b13fc54edd1012ff/-473Wx593H-701587637-black-MODEL.jpg",
+                brand: "BABY SHARK PREMIUM",
+                name: "Toddler Baby Shark Smart Musical Onesie with App Control",
+                rating: "4.9",
+                reviews: "298",
+                currentPrice: "₹2,199",
+                originalPrice: "₹3,699",
+                discount: "(40% off)",
+                details: ["App Control", "Smart Sensors", "Organic Cotton", "Age 6M-2 Years"]
+            },
+        ]
+        
+        // Generate product cards
+        for (let i = 0; i < cardDetail.length; i++) {
+            let product = document.getElementById("products")
+            let card = document.createElement("div")
+            card.className = "product-card"
+            card.style.setProperty('--i', i);
+            product.appendChild(card)
+            
+            // Create details HTML
+            let detailsHTML = '';
+            if (cardDetail[i].details && cardDetail[i].details.length > 0) {
+                detailsHTML = '<div class="product-details">';
+                cardDetail[i].details.forEach(detail => {
+                    detailsHTML += `<span class="detail-tag">${detail}</span>`;
+                });
+                detailsHTML += '</div>';
+            }
+            
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${cardDetail[i].img}" alt="${cardDetail[i].name}" />
+                    <button class="wishlist-btn">♡</button>
+                    <button class="quick-view-btn">Quick View</button>
+                </div>
+                <div class="product-info">
+                    <div class="brand-name">${cardDetail[i].brand}</div>
+                    <div class="product-name">${cardDetail[i].name}</div>
+                    <div class="rating-section">
+                        <div class="rating-stars">${cardDetail[i].rating} ★</div>
+                        <div class="rating-count">(${cardDetail[i].reviews})</div>
+                    </div>
+                    ${detailsHTML}
+                    <div class="price-section">
+                        <span class="current-price">${cardDetail[i].currentPrice}</span>
+                        <span class="original-price">${cardDetail[i].originalPrice}</span>
+                        <span class="discount-percent">${cardDetail[i].discount}</span>
+                    </div>
+                </div>
+            `
+        }
+        
+        // Add click events
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('wishlist-btn') && !e.target.classList.contains('quick-view-btn')) {
+                    console.log('Product clicked:', this.querySelector('.product-name').textContent);
+                }
+            });
+        });
+        
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.textContent = this.textContent === '♡' ? '♥' : '♡';
+                this.style.color = this.textContent === '♥' ? '#ff6f61' : '#282c3f';
+            });
+        });
+        
+        document.querySelectorAll('.quick-view-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Quick view clicked');
+            });
+        });
+    </script>
+    <script type="module">
+    import nav from './navbar.js';
+    document.getElementById("Nav").appendChild(nav());
+    window.initializeNavbar && window.initializeNavbar();
+    
+    // Bag icon click event after navbar is rendered
+    const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+    if (bagIcon) {
+      bagIcon.style.cursor = 'pointer';
+      bagIcon.addEventListener('click', function() {
+        window.location.href = 'bag.html';
+      });
+    }
+    
+    import footer from './footer.js';
+    document.getElementById("Footer").appendChild(footer());
+</script>
+</body>
+</html>

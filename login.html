@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJIO Sign In with OTP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .signin-container {
+            background: #ffffff;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            max-width: 110px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #2c4152;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #2c4152;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2c4152;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e2d3b;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .otp-box {
+            display: none;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 450px) {
+            .signin-container {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signin-container">
+        <div class="logo">
+            <img src="https://assets.ajio.com/static/img/Ajio-Logo.svg" alt="AJIO Logo">
+        </div>
+        <h2>Welcome to AJIO</h2>
+
+        <!-- Mobile Number Section -->
+        <div id="mobile-section">
+            <label for="mobile">Enter Mobile Number</label>
+            <input type="text" id="mobile" placeholder="ex. 9876543210" maxlength="10" />
+            <button onclick="sendOTP()">CONTINUE</button>
+        </div>
+
+        <!-- OTP Section -->
+        <div id="otp-section" class="otp-box">
+            <label for="otp">Enter OTP : <span id="add" style="color: red;"></span></label>
+            <input type="text" id="otp" placeholder="Enter OTP" maxlength="6" />
+            <button onclick="verifyOTP()">Verify OTP</button>
+        </div>
+
+        <p class="terms">
+            By continuing, you agree to AJIO’s <strong>Terms of Use</strong> and <strong>Privacy Policy</strong>.
+        </p>
+    </div>
+
+    <script>
+        let otp = "";
+
+        function sendOTP() {
+            let input = document.getElementById("mobile").value;
+
+            if (input == "") {
+                alert("Please enter mobile number.");
+            } else {
+                otp = "";
+                for (let i = 0; i < 6; i++) {
+                    otp += Math.floor(Math.random() * 10);
+                }
+
+                let add = document.getElementById("add")
+                add.innerText = otp
+
+                document.getElementById("mobile-section").style.display = "none";
+                document.getElementById("otp-section").style.display = "block";
+            }
+        }
+
+        function verifyOTP() {
+
+            let user = document.getElementById("otp").value;
+
+            if (user == "") {
+                alert("Please enter the OTP.");
+            } else if (user == otp) {
+                alert("OTP Verified Successfully!");
+                window.location.href = 'index.html';
+            } else {
+                alert("Incorrect OTP. Please try again.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

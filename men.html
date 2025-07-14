@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Fashion Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="https://img.utdstc.com/icon/b7e/c6b/b7ec6bcad19a722c6f27fb3297d7ae074982d7915c421d541f5e07072fe654a9:200" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #282c3f;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: #ffffff;
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Section */
+        .header-section {
+            background-color: #ffffff;
+            padding: 32px 0;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* Top Bar */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            margin-bottom: 28px;
+            background-color: #fafafa;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .results-count {
+            font-size: 18px;
+            font-weight: 600;
+            color: #282c3f;
+        }
+        
+        .filter-sort-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .view-options {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .view-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #696b79;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .grid-toggle {
+            display: flex;
+            gap: 3px;
+            padding: 8px;
+            border: 1px solid #d4d5d9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #ffffff;
+        }
+        
+        .grid-toggle:hover {
+            border-color: #b0b0b0;
+            background-color: #f5f5f5;
+        }
+        
+        .grid-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #282c3f;
+            border-radius: 2px;
+        }
+        
+        .sort-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .sort-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #696b79;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .sort-dropdown {
+            padding: 10px 16px;
+            border: 1px solid #d4d5d9;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #ffffff;
+            color: #282c3f;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+            min-width: 160px;
+        }
+        
+        .sort-dropdown:hover,
+        .sort-dropdown:focus {
+            border-color: #b0b0b0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Page Title */
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 0;
+            text-align: left;
+            letter-spacing: -0.5px;
+            padding: 0 4px;
+        }
+        
+        /* Product Grid - EXACTLY 4 CARDS PER ROW */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* EXACTLY 4 CARDS */
+            gap: 20px;
+            padding: 0;
+        }
+        
+        /* Product Card - PERFECT SIZE */
+        .product-card {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid transparent;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 8px 24px rgba(40, 44, 63, 0.12);
+            border-color: #f0f0f0;
+            transform: translateY(-4px);
+        }
+        
+        /* Image Container */
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+        
+        /* Wishlist Button */
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            color: #282c3f;
+        }
+        
+        .product-card:hover .wishlist-btn {
+            opacity: 1;
+        }
+        
+        .wishlist-btn:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Quick View Button */
+        .quick-view-btn {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background-color: #282c3f;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(40, 44, 63, 0.3);
+        }
+        
+        .product-card:hover .quick-view-btn {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .quick-view-btn:hover {
+            background-color: #1a1d29;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 44, 63, 0.4);
+        }
+        
+        /* Product Info */
+        .product-info {
+            padding: 14px 10px 18px 10px;
+        }
+        
+        /* Brand Name */
+        .brand-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #282c3f;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        /* Product Name */
+        .product-name {
+            font-size: 13px;
+            font-weight: 400;
+            color: #696b79;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 36px;
+        }
+        
+        /* Rating */
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 3px 6px;
+            background-color: #388e3c;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .rating-count {
+            font-size: 11px;
+            color: #696b79;
+            font-weight: 400;
+        }
+        
+        /* Price Section */
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .current-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #282c3f;
+        }
+        
+        .original-price {
+            font-size: 13px;
+            color: #696b79;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+        
+        .discount-percent {
+            font-size: 11px;
+            color: #ff6f61;
+            font-weight: 600;
+        }
+
+        /* Product Details */
+        .product-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+        }
+
+        .detail-tag {
+            font-size: 10px;
+            color: #696b79;
+            background-color: #f5f5f6;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        
+        /* RESPONSIVE - EXACTLY AS REQUESTED */
+        /* Large Desktop - 4 CARDS */
+        @media (min-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+            }
+            
+            .product-image {
+                height: 380px;
+            }
+        }
+        
+        /* Medium Desktop - 4 CARDS */
+        @media (max-width: 1199px) and (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .product-image {
+                height: 320px;
+            }
+        }
+        
+        /* Tablet - 3 CARDS */
+        @media (max-width: 991px) and (min-width: 768px) {
+            .container {
+                margin-top: 20px;
+                padding: 0 16px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+            
+            .product-image {
+                height: 280px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+                padding: 20px 16px;
+            }
+            
+            .filter-sort-section {
+                width: 100%;
+                justify-content: space-between;
+                gap: 20px;
+            }
+        }
+        
+        /* Mobile - 2 CARDS */
+        @media (max-width: 767px) {
+            .container {
+                margin-top: 20px;
+                padding: 0 12px;
+            }
+            
+            .header-section {
+                padding: 24px 0;
+                margin-bottom: 32px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 12px;
+            }
+            
+            .product-image {
+                height: auto;
+                object-fit: contain;
+            }
+            
+            .product-info {
+                padding: 10px 8px 14px 8px;
+            }
+            
+            .brand-name {
+                font-size: 11px;
+            }
+            
+            .product-name {
+                font-size: 12px;
+                height: 32px;
+            }
+            
+            .current-price {
+                font-size: 14px;
+            }
+            
+            .original-price {
+                font-size: 12px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .topbar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+                padding: 16px 12px;
+            }
+            
+            .filter-sort-section {
+                width: 100%;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .detail-tag {
+                font-size: 9px;
+                padding: 2px 6px;
+            }
+        }
+        
+        /* Loading Animation */
+        .product-card {
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: calc(var(--i, 0) * 0.08s);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Selection */
+        ::selection {
+            background-color: #282c3f;
+            color: #ffffff;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4d5d9;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b0b0b0;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div id="Nav"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="topbar">
+                <div class="results-count">3,847 Items</div>
+                <div class="filter-sort-section">
+                    <div class="view-options">
+                        <span class="view-text">View</span>
+                        <div class="grid-toggle">
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                            <div class="grid-dot"></div>
+                        </div>
+                    </div>
+                    <div class="sort-section">
+                        <span class="sort-label">Sort By</span>
+                        <select class="sort-dropdown">
+                            <option>Relevance</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest First</option>
+                            <option>Popularity</option>
+                            <option>Discount</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <h1 class="page-title">Premium Men's Collection - Up to 40% Off</h1>
+        </div>
+        
+        <!-- Product Grid Section -->
+        <div class="product-section">
+            <div class="product-grid" id="products"></div>
+        </div>
+    </div>
+    
+    <div id="Footer"></div>
+    
+    <script>
+        let cardDetail = [
+            {
+                id: "1",
+                img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRmeB4o4Y54EPLFbp_KH-j2O5XoSxGTqSivE_tr8gugwN03err2XbjcRP78tgJ0qJWaewZN4m5XgG8UQYKbgwa9RqHLob5HhVxvQeYq2vXmzRJA8Lfj9s0Y",
+                brand: "HUGO BOSS",
+                name: "Men's Premium Cotton Dress Shirt",
+                rating: "4.7",
+                reviews: "324",
+                currentPrice: "₹3,599",
+                originalPrice: "₹5,999",
+                discount: "(40% off)",
+                details: ["Egyptian Cotton", "Tailored Fit", "French Cuffs", "Wrinkle Free"]
+            },
+            {
+                id: "2",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250408/UZ4l/67f525e87a6cd4182fb51b69/-473Wx593H-701429213-grey-MODEL.jpg",
+                brand: "CALVIN KLEIN",
+                name: "Men's Luxury Formal Shirt with Contrast Details",
+                rating: "4.5",
+                reviews: "267",
+                currentPrice: "₹4,199",
+                originalPrice: "₹6,999",
+                discount: "(40% off)",
+                details: ["Premium Cotton", "Slim Fit", "Mother Pearl Buttons", "Italian Collar"]
+            },
+            {
+                id: "3",
+                img: "https://assets.ajio.com/medias/sys_master/root/20240716/jomU/6696b1036f60443f31523421/-473Wx593H-467320328-beige-MODEL.jpg",
+                brand: "TOMMY HILFIGER",
+                name: "Men's Designer Casual Shirt with Logo Embroidery",
+                rating: "4.6",
+                reviews: "189",
+                currentPrice: "₹3,899",
+                originalPrice: "₹6,499",
+                discount: "(40% off)",
+                details: ["Organic Cotton", "Regular Fit", "Logo Embroidery", "Premium Finish"]
+            },
+            {
+                id: "4",
+                img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQSZyQLCeqHccEloXzKhxYJb06APCSN2w7bfPXDHX-cSVPhpAhmmkaa-yG0Mb3YCvWGIGA4_1K85Rnjqh9oLNx-hl1hHwkafvKlGhFOhGYFwbtM8W_lA8GBkg",
+                brand: "POLO RALPH LAUREN",
+                name: "Men's Signature Graphic Print T-Shirt",
+                rating: "4.4",
+                reviews: "412",
+                currentPrice: "₹2,799",
+                originalPrice: "₹4,699",
+                discount: "(40% off)",
+                details: ["Pima Cotton", "Classic Fit", "Signature Logo", "Pre-Shrunk"]
+            },
+            {
+                id: "5",
+                img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop&crop=center",
+                brand: "ARMANI EXCHANGE",
+                name: "Men's Designer Bomber Jacket with Quilted Lining",
+                rating: "4.8",
+                reviews: "156",
+                currentPrice: "₹8,999",
+                originalPrice: "₹14,999",
+                discount: "(40% off)",
+                details: ["Water Resistant", "Quilted Lining", "YKK Zippers", "Premium Fabric"]
+            },
+            {
+                id: "6",
+                img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRPVLoTIfWIN7k9B-2iXJnONCwEprzi4dkyXTPSaC_KHefJY4P19QNkhnHAhZh0YHV6tbEzBIIEBhEOOL3q0dynlDjDMJumtN0-E7g1N1W1qrCmS8oJMw9U",
+                brand: "LEVI'S PREMIUM",
+                name: "Men's Luxury Stretch Chinos with Belt",
+                rating: "4.5",
+                reviews: "298",
+                currentPrice: "₹4,599",
+                originalPrice: "₹7,699",
+                discount: "(40% off)",
+                details: ["Stretch Cotton", "Tailored Fit", "Reinforced Seams", "Premium Hardware"]
+            },
+            {
+                id: "7",
+                img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRx1eUnLDVBzv5LOvp4IEWBMpMdoh29b7c8nFAPS0hZInGMRsKUC1GBgYbUEqwP1VFG6aAPci738LCmW58pNBS_O5wzGadCkAki-zwBVqbIXUwWcyxBi0zBqQ",
+                brand: "DIESEL",
+                name: "Men's Designer Oversized Graphic Tee",
+                rating: "4.3",
+                reviews: "234",
+                currentPrice: "₹3,299",
+                originalPrice: "₹5,499",
+                discount: "(40% off)",
+                details: ["Premium Cotton", "Oversized Fit", "Screen Print", "Vintage Wash"]
+            },
+            {
+                id: "8",
+                img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRpyopzedpP8RvjMCGINLXYn1zqAq4zubGeLx9be9A3f3EM4i6mGoaMzfpYUfH5lijMT3pL5HXokWEpyiWLAP5gGtmDtTLL8t7-CrOzhgYJ3AHrNeZF5Wfdww",
+                brand: "VERSACE JEANS",
+                name: "Men's Designer Leather Belt with Gold Buckle",
+                rating: "4.9",
+                reviews: "187",
+                currentPrice: "₹5,999",
+                originalPrice: "₹9,999",
+                discount: "(40% off)",
+                details: ["Genuine Leather", "Gold Plated Buckle", "Italian Crafted", "Gift Box"]
+            },
+            {
+                id: "9",
+                img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQxyVaShpGtK6Y4E0nUn5R1BMrSUTF67SIOa0wwWwGHQ8VoNEFdIvOlRlZvgNPQvvKu1HtI5eJz7H83QUyU9DxIh1hzDXOBn_h297dfRrbKAzp6AO7jy1_u",
+                brand: "NIKE PREMIUM",
+                name: "Men's Limited Edition Sneakers with Air Technology",
+                rating: "4.6",
+                reviews: "445",
+                currentPrice: "₹12,999",
+                originalPrice: "₹21,699",
+                discount: "(40% off)",
+                details: ["Air Max Technology", "Premium Leather", "Limited Edition", "Comfort Sole"]
+            },
+            {
+                id: "10",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250604/tPqr/683ffc177a6cd4182f81a64a/-473Wx593H-701567363-coffee-MODEL.jpg",
+                brand: "ADIDAS ORIGINALS",
+                name: "Men's Designer Walking Shoes with Boost Technology",
+                rating: "4.7",
+                reviews: "356",
+                currentPrice: "₹9,599",
+                originalPrice: "₹15,999",
+                discount: "(40% off)",
+                details: ["Boost Technology", "Primeknit Upper", "Continental Rubber", "Energy Return"]
+            },
+            {
+                id: "11",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250220/AP5O/67b72f442960820c49981c2f/-473Wx593H-700956164-olive-MODEL.jpg",
+                brand: "STONE ISLAND",
+                name: "Men's Premium Printed T-Shirt with Badge",
+                rating: "4.4",
+                reviews: "278",
+                currentPrice: "₹4,799",
+                originalPrice: "₹7,999",
+                discount: "(40% off)",
+                details: ["Mercerized Cotton", "Signature Badge", "Garment Dyed", "Italian Made"]
+            },
+            {
+                id: "12",
+                img: "https://assets.ajio.com/medias/sys_master/root/20241209/isWF/6757087f0f47f80c87e8c425/-473Wx593H-700902053-multi-MODEL.jpg",
+                brand: "G-STAR RAW",
+                name: "Men's Premium Slim Fit Raw Denim Jeans",
+                rating: "4.6",
+                reviews: "389",
+                currentPrice: "₹6,999",
+                originalPrice: "₹11,699",
+                discount: "(40% off)",
+                details: ["Raw Denim", "Slim Tapered", "Selvedge Details", "Japanese Fabric"]
+            },
+            {
+                id: "13",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250514/IjQx/6823cd9955340d4b4f332cf7/-473Wx593H-700956164-black-MODEL.jpg",
+                brand: "BROOKS BROTHERS",
+                name: "Men's Executive Formal Shirt with French Cuffs",
+                rating: "4.8",
+                reviews: "567",
+                currentPrice: "₹5,499",
+                originalPrice: "₹9,199",
+                discount: "(40% off)",
+                details: ["Non-Iron Fabric", "French Cuffs", "Executive Fit", "Luxury Cotton"]
+            },
+            {
+                id: "14",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250604/ILLT/683ffdce55340d4b4f84a781/-473Wx593H-701567363-multi-MODEL.jpg",
+                brand: "CHAMPION",
+                name: "Men's Premium Hooded Sweatshirt with Embroidery",
+                rating: "4.5",
+                reviews: "423",
+                currentPrice: "₹4,999",
+                originalPrice: "₹8,299",
+                discount: "(40% off)",
+                details: ["Heavyweight Cotton", "Embroidered Logo", "Fleece Lined", "Ribbed Cuffs"]
+            },
+            {
+                id: "15",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250512/gGNN/68212a677a6cd4182f27610e/-473Wx593H-701567947-grey-MODEL.jpg",
+                brand: "CARHARTT WIP",
+                name: "Men's Designer Cargo Pants with Utility Pockets",
+                rating: "4.4",
+                reviews: "312",
+                currentPrice: "₹6,299",
+                originalPrice: "₹10,499",
+                discount: "(40% off)",
+                details: ["Ripstop Fabric", "Utility Pockets", "Reinforced Knees", "Adjustable Waist"]
+            },
+            {
+                id: "16",
+                img: "https://assets.ajio.com/medias/sys_master/root/20250417/lq5t/68012f6155340d4b4fe23bb4/-473Wx593H-701471866-brown-MODEL.jpg",
+                brand: "SCHOTT NYC",
+                name: "Men's Genuine Leather Biker Jacket",
+                rating: "4.9",
+                reviews: "198",
+                currentPrice: "₹24,999",
+                originalPrice: "₹41,699",
+                discount: "(40% off)",
+                details: ["Genuine Leather", "YKK Zippers", "Quilted Lining", "Vintage Style"]
+            },
+        ]
+        
+        // Generate product cards
+        for (let i = 0; i < cardDetail.length; i++) {
+            let product = document.getElementById("products")
+            let card = document.createElement("div")
+            card.className = "product-card"
+            card.style.setProperty('--i', i);
+            product.appendChild(card)
+            
+            // Create details HTML
+            let detailsHTML = '';
+            if (cardDetail[i].details && cardDetail[i].details.length > 0) {
+                detailsHTML = '<div class="product-details">';
+                cardDetail[i].details.forEach(detail => {
+                    detailsHTML += `<span class="detail-tag">${detail}</span>`;
+                });
+                detailsHTML += '</div>';
+            }
+            
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${cardDetail[i].img}" alt="${cardDetail[i].name}" />
+                    <button class="wishlist-btn">♡</button>
+                    <button class="quick-view-btn">Quick View</button>
+                </div>
+                <div class="product-info">
+                    <div class="brand-name">${cardDetail[i].brand}</div>
+                    <div class="product-name">${cardDetail[i].name}</div>
+                    <div class="rating-section">
+                        <div class="rating-stars">${cardDetail[i].rating} ★</div>
+                        <div class="rating-count">(${cardDetail[i].reviews})</div>
+                    </div>
+                    ${detailsHTML}
+                    <div class="price-section">
+                        <span class="current-price">${cardDetail[i].currentPrice}</span>
+                        <span class="original-price">${cardDetail[i].originalPrice}</span>
+                        <span class="discount-percent">${cardDetail[i].discount}</span>
+                    </div>
+                </div>
+            `
+        }
+        
+        // Add click events
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('wishlist-btn') && !e.target.classList.contains('quick-view-btn')) {
+                    console.log('Product clicked:', this.querySelector('.product-name').textContent);
+                }
+            });
+        });
+        
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.textContent = this.textContent === '♡' ? '♥' : '♡';
+                this.style.color = this.textContent === '♥' ? '#ff6f61' : '#282c3f';
+            });
+        });
+        
+        document.querySelectorAll('.quick-view-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Quick view clicked');
+            });
+        });
+    </script>
+
+<script type="module">
+    import nav from './navbar.js';
+    document.getElementById("Nav").appendChild(nav());
+    window.initializeNavbar && window.initializeNavbar();
+    // Bag icon click event after navbar is rendered
+    const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+    if (bagIcon) {
+      bagIcon.style.cursor = 'pointer';
+      bagIcon.addEventListener('click', function() {
+        window.location.href = 'bag.html';
+      });
+    }
+    import footer from './footer.js';
+    document.getElementById("Footer").appendChild(footer());
+  </script>
+</body>
+</html>

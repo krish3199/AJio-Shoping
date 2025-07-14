@@ -9,7 +9,7 @@ function nav() {
                 <!-- Navigation Menu -->
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Men</a>
+                        <a href="men.html" class="nav-link">Men</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -74,7 +74,7 @@ function nav() {
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Women</a>
+                        <a href="women.html" class="nav-link">Women</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -144,7 +144,7 @@ function nav() {
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Kids</a>
+                        <a href="kids.html" class="nav-link">Kids</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -213,7 +213,7 @@ function nav() {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Beauty</a>
+                        <a href="beauty.html" class="nav-link">Beauty</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -282,7 +282,7 @@ function nav() {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Kitchen</a>
+                        <a href="kitchen.html" class="nav-link">Kitchen</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -421,6 +421,34 @@ function nav() {
             </div>
         </nav>
     `
+  // Add event listeners for Sign In / Join AJIO (desktop and mobile)
+  setTimeout(() => {
+    // Desktop
+    const signInLinks = navbar.querySelectorAll('.nav-right-link');
+    signInLinks.forEach(link => {
+      if (link.textContent.trim() === 'Sign In / Join AJIO') {
+        link.style.cursor = 'pointer';
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'login.html';
+        });
+      }
+    });
+    // Mobile
+    const mobileMenu = navbar.querySelector('.mobile-menu');
+    if (mobileMenu) {
+      const mobileSignInLinks = mobileMenu.querySelectorAll('.nav-right-link');
+      mobileSignInLinks.forEach(link => {
+        if (link.textContent.trim() === 'Sign In / Join AJIO') {
+          link.style.cursor = 'pointer';
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'login.html';
+          });
+        }
+      });
+    }
+  }, 0);
   return navbar
 }
 const categoryContent = {

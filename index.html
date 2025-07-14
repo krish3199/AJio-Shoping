@@ -22,7 +22,7 @@
 
     <!-- slider-1 -->
     <div class="slider-container">
-        <a href="./card.html">
+        <a href="./card1.html">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="slide">
                 <img src="https://assets.ajio.com/cms/AJIO/WEB/D-RHS-UHP-1.0-S1-mainbanners-P4-dnmx-avasa-60-80-260625%20(1).jpg"
@@ -110,6 +110,7 @@
     <!-- slider-2 -->
     <div class="text">SPONSORS & MONETIZATION</div>
     <div class="slider-container">
+        <a href="./card2.html">
         <div class="slider-wrapper">
             <div class="slide">
                 <img src="https://assets.ajio.com/cms/AJIO/WEB/D_1.0_UHP_Sponsor_ZEEL_30-50_p3.jpg"
@@ -133,9 +134,9 @@
             <div class="slide">
                 <img src="https://assets.ajio.com/cms/AJIO/WEB/D_1.0_UHP_Sponsor_Technosport_Starting299_p4.jpg"
                     alt="Slide 6">
-            </div>
-           
+            </div>   
         </div>
+        </a>
     </div>
     <div class="dots"></div>
     <!-- slider-2 -->
@@ -143,6 +144,7 @@
     <!-- slider-3 -->   
     <div class="text">TOP MNZ BRANDS</div>
     <div class="slider-container">
+        <a href="./card3.html">
         <div class="slider-wrapper">
             <div class="slide">
                 <img src="https://assets.ajio.com/cms/AJIO/WEB/D-GFS-UHP-1.0-S1-mainbanners-P10-BUDAJEANS-FYREROSE-FLAT60-07072025.jpg"
@@ -169,6 +171,7 @@
             </div>
            
         </div>
+        </a>
     </div>
     <div class="dots"></div>
     <!-- slider-3 -->
@@ -177,6 +180,7 @@
     <!-- slider-4 -->
     <div class="text">TRENDING NOW</div>
     <section class="ajio-slider-section">
+    <a href="./card4.html">
   <div class="ajio-slider-wrapper">
     <div class="ajio-slider">
       <div class="ajio-slide">
@@ -201,7 +205,7 @@
         <img src="https://assets.ajio.com/cms/AJIO/WEB/D-BBS-UHP-1%20(6-new)%20(2).jpg" alt="AZORTE">
       </div>
     </div>
-
+</a>
     <button class="ajio-nav-btn ajio-prev">&#10094;</button>
     <button class="ajio-nav-btn ajio-next">&#10095;</button>
   </div>
@@ -237,6 +241,7 @@
     <div class="text">WESTERN WEAR</div>
     <section class="ajio-slider-section">
   <div class="ajio-slider-wrapper">
+    <a href="./card5.html">
     <div class="ajio-slider">
       <div class="ajio-slide">
         <img src="https://assets.ajio.com/cms/AJIO/WEB/D-GFS-UHP-1.0-Footwear-adidas-min30-04072025.jpg" alt="Trends">
@@ -260,6 +265,7 @@
           <img src="https://assets.ajio.com/cms/AJIO/WEB/D-Ajiomania-UHP-1.0-Footwear-Louisphilippe-Redchief-Min40-07042025.jpg" alt="AZORTE">
         </div>
     </div>
+    </a>
 
     <button class="ajio-nav-btn ajio-prev">&#10094;</button>
     <button class="ajio-nav-btn ajio-next">&#10095;</button>
@@ -303,7 +309,15 @@
 <script type="module">
     import nav from './navbar.js'
     document.getElementById("Nav").appendChild(nav());
-    if (window.initializeNavbar) window.initializeNavbar();
+    window.initializeNavbar && window.initializeNavbar();
+
+    const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+    if (bagIcon) {
+      bagIcon.style.cursor = 'pointer';
+      bagIcon.addEventListener('click', function() {
+        window.location.href = 'bag.html';
+      });
+    }
 
     import footer from './footer.js'
     document.getElementById("Footer").appendChild(footer())
@@ -473,21 +487,7 @@
     }, 1500);
   });
 </script>
-<script>
-  if (window.initializeNavbar) {
-    window.initializeNavbar();
-  }
-</script>
-<script>
-  // Make all slider images open card.html on click
-  document.querySelectorAll(
-    '.slider-container .slide img, .ajio-slider img'
-  ).forEach(function(img) {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', function() {
-      window.location.href = 'card.html';
-    });
-  });
-</script>
+
+
 </body>
 </html>
