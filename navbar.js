@@ -395,23 +395,21 @@ function nav() {
                     <div class="mobile-search">
                         <input type="text" placeholder="Search AJIO">
                     </div>
-                    
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Men</a>
+                        <a href="men.html" class="mobile-nav-link">Men</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Women</a>
+                        <a href="women.html" class="mobile-nav-link">Women</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Kids</a>
+                        <a href="kids.html" class="mobile-nav-link">Kids</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Beauty</a>
+                        <a href="beauty.html" class="mobile-nav-link">Beauty</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Home & Kitchen</a>
+                        <a href="kitchen.html" class="mobile-nav-link">Kitchen</a>
                     </div>
-                    
                     <div class="mobile-right-links">
                         <a href="#" class="nav-right-link">Sign In / Join AJIO</a>
                         <a href="#" class="nav-right-link">Customer Care</a>
