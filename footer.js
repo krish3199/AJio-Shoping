@@ -201,24 +201,22 @@ function footer(){
     </div>
 
     <div class="footer-secure">
-        <div class="footer-left">
-            <p>Payment methods</p>
-            <div class="payment-icons">
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/bank-cards.png" alt="Bank Cards" />
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/visa.png" alt="Visa" />
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/mastercard-logo.png" alt="MasterCard" />
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/cash-on-delivery.png" alt="Cash on Delivery" />
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/jio.png" alt="Jio" />
+       <div class="payment-methods">
+                <h5>Payment methods</h5>
+                <div class="payment-icons">
+                    <span class="payment-icon">Net Banking</span>
+                    <span class="payment-icon">Verified by VISA</span>
+                    <span class="payment-icon">MasterCard</span>
+                    <span class="payment-icon">CASH ON DELIVERY</span>
+                    <span class="payment-icon">Jio Money</span>
+                </div>
             </div>
-        </div>
-        <div class="footer-right">
-            <p>Secure systems</p>
-            <div class="secure-icons">
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/lock.png" alt="SSL Lock" />
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/shield.png" alt="Shield" />
-                <img src="https://img.icons8.com/ios-filled/24/ffffff/key-security.png" alt="Key" />
+            <div class="secure-systems">
+                <h5>Secure systems</h5>
+                <div class="security-badge">
+                    <span>🔒 256 BIT SSL</span>
+                </div>
             </div>
-        </div>
     </div>
 
     <div>
