@@ -200,8 +200,8 @@ function footer(){
         </div>
     </div>
 
-    <div class="footer-secure">
-       <div class="payment-methods">
+     <div class="footer-bottom">
+            <div class="payment-methods">
                 <h5>Payment methods</h5>
                 <div class="payment-icons">
                     <span class="payment-icon">Net Banking</span>
@@ -217,7 +217,7 @@ function footer(){
                     <span>🔒 256 BIT SSL</span>
                 </div>
             </div>
-    </div>
+        </div>
 
     <div>
 `

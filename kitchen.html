@@ -7,563 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #ffffff;
-            color: #282c3f;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-        
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background-color: #ffffff;
-            margin-top: 80px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Header Section */
-        .header-section {
-            background-color: #ffffff;
-            padding: 32px 0;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        /* Top Bar */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px;
-            margin-bottom: 28px;
-            background-color: #fafafa;
-            border-radius: 12px;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .results-count {
-            font-size: 18px;
-            font-weight: 600;
-            color: #282c3f;
-        }
-        
-        .filter-sort-section {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-        
-        .view-options {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .view-text {
-            font-size: 13px;
-            font-weight: 600;
-            color: #696b79;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        
-        .grid-toggle {
-            display: flex;
-            gap: 3px;
-            padding: 8px;
-            border: 1px solid #d4d5d9;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background-color: #ffffff;
-        }
-        
-        .grid-toggle:hover {
-            border-color: #b0b0b0;
-            background-color: #f5f5f5;
-        }
-        
-        .grid-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #282c3f;
-            border-radius: 2px;
-        }
-        
-        .sort-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .sort-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #696b79;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        
-        .sort-dropdown {
-            padding: 10px 16px;
-            border: 1px solid #d4d5d9;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            background-color: #ffffff;
-            color: #282c3f;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.2s ease;
-            min-width: 160px;
-        }
-        
-        .sort-dropdown:hover,
-        .sort-dropdown:focus {
-            border-color: #b0b0b0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Page Title */
-        .page-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #282c3f;
-            margin-bottom: 0;
-            text-align: left;
-            letter-spacing: -0.5px;
-            padding: 0 4px;
-        }
-        
-        /* Product Grid - EXACTLY 4 CARDS PER ROW */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 0;
-        }
-        
-        /* Product Card */
-        .product-card {
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            border: 1px solid #f0f0f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-        
-        .product-card:hover {
-            box-shadow: 0 12px 32px rgba(40, 44, 63, 0.15);
-            border-color: #e0e0e0;
-            transform: translateY(-6px);
-        }
-        
-        /* Image Container */
-        .product-image {
-            position: relative;
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            background-color: #fafafa;
-        }
-        
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.4s ease;
-        }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.08);
-        }
-        
-        /* Wishlist Button */
-        .wishlist-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            font-size: 16px;
-            color: #282c3f;
-        }
-        
-        .product-card:hover .wishlist-btn {
-            opacity: 1;
-        }
-        
-        .wishlist-btn:hover {
-            background-color: #ffffff;
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Quick View Button */
-        .quick-view-btn {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%) translateY(30px);
-            background-color: #ff6b35;
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-        }
-        
-        .product-card:hover .quick-view-btn {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        
-        .quick-view-btn:hover {
-            background-color: #e55a2b;
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
-        }
-        
-        /* Product Info */
-        .product-info {
-            padding: 16px 14px 20px 14px;
-        }
-        
-        /* Brand Name */
-        .brand-name {
-            font-size: 12px;
-            font-weight: 700;
-            color: #ff6b35;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        
-        /* Product Name */
-        .product-name {
-            font-size: 14px;
-            font-weight: 500;
-            color: #282c3f;
-            margin-bottom: 12px;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: 40px;
-        }
-        
-        /* Rating */
-        .rating-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        
-        .rating-stars {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            padding: 4px 8px;
-            background-color: #28a745;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-        
-        .rating-count {
-            font-size: 11px;
-            color: #696b79;
-            font-weight: 400;
-        }
-        
-        /* Price Section */
-        .price-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
-        
-        .current-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: #282c3f;
-        }
-        
-        .original-price {
-            font-size: 14px;
-            color: #696b79;
-            text-decoration: line-through;
-            font-weight: 400;
-        }
-        
-        .discount-percent {
-            font-size: 12px;
-            color: #28a745;
-            font-weight: 600;
-        }
 
-        /* Product Details */
-        .product-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-
-        .detail-tag {
-            font-size: 10px;
-            color: #696b79;
-            background-color: #f8f9fa;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-weight: 500;
-            border: 1px solid #e9ecef;
-        }
-
-        /* Special Badges */
-        .badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge-bestseller {
-            background-color: #ff6b35;
-            color: white;
-        }
-
-        .badge-new {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .badge-sale {
-            background-color: #dc3545;
-            color: white;
-        }
-        
-        /* RESPONSIVE */
-        /* Large Desktop - 4 CARDS */
-        @media (min-width: 1200px) {
-            .product-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 24px;
-            }
-            
-            .product-image {
-                height: 320px;
-            }
-        }
-        
-        /* Medium Desktop - 4 CARDS */
-        @media (max-width: 1199px) and (min-width: 992px) {
-            .product-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-            
-            .product-image {
-                height: 280px;
-            }
-        }
-        
-        /* Tablet - 3 CARDS */
-        @media (max-width: 991px) and (min-width: 768px) {
-            .container {
-                margin-top: 20px;
-                padding: 0 16px;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 18px;
-            }
-            
-            .product-image {
-                height: 240px;
-            }
-            
-            .topbar {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
-                padding: 20px 16px;
-                margin-top: 10%;
-            }
-            
-            .filter-sort-section {
-                width: 100%;
-                justify-content: space-between;
-                gap: 20px;
-            }
-        }
-        
-        /* Mobile - 2 CARDS */
-        @media (max-width: 767px) {
-            .container {
-                margin-top: 20px;
-                padding: 0 12px;
-            }
-            
-            .header-section {
-                padding: 24px 0;
-                margin-bottom: 32px;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .product-image {
-                height: 180px;
-            }
-            
-            .product-info {
-                padding: 12px 10px 16px 10px;
-            }
-            
-            .brand-name {
-                font-size: 11px;
-            }
-            
-            .product-name {
-                font-size: 12px;
-                height: 32px;
-            }
-            
-            .current-price {
-                font-size: 16px;
-            }
-            
-            .original-price {
-                font-size: 12px;
-            }
-            
-            .page-title {
-                font-size: 24px;
-            }
-            
-            .topbar {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
-                padding: 16px 12px;
-            }
-            
-            .filter-sort-section {
-                width: 100%;
-                justify-content: space-between;
-                gap: 16px;
-            }
-
-            .detail-tag {
-                font-size: 9px;
-                padding: 3px 6px;
-            }
-        }
-        
-        /* Loading Animation */
-        .product-card {
-            animation: fadeInUp 0.6s ease forwards;
-            animation-delay: calc(var(--i, 0) * 0.08s);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Selection */
-        ::selection {
-            background-color: #ff6b35;
-            color: #ffffff;
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f8f9fa;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #d4d5d9;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #b0b0b0;
-        }
-        
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 <body>
     <div id="Nav"></div>
     
-    <div class="container">
+    <div class="containere">
         <!-- Header Section -->
         <div class="header-section">
             <div class="topbar">
@@ -606,285 +59,277 @@
         import nav from './navbar.js';
         document.getElementById("Nav").appendChild(nav());
         window.initializeNavbar && window.initializeNavbar();
-        
-        // Bag icon click event after navbar is rendered
-        const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
-        if (bagIcon) {
-          bagIcon.style.cursor = 'pointer';
-          bagIcon.addEventListener('click', function() {
-            window.location.href = 'bag.html';
-          });
-        }
+    
         
         import footer from './footer.js';
         document.getElementById("Footer").appendChild(footer());
     </script>
     <script>
-        let homeKitchenProducts = [
-            {
-                id: "1",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240311/BItp/65ef1a2b05ac7d77bba99c6f/-473Wx593H-467154009-multi-MODEL.jpg",
-                brand: "KITCHEN ESSENTIALS",
-                name: "Multi-Color Kitchen Storage Containers - Airtight Set",
-                rating: "4.3",
-                reviews: "1,847",
-                currentPrice: "₹1,299",
-                originalPrice: "₹1,899",
-                discount: "(32% off)",
-                details: ["Airtight Seal", "Multi-Color", "BPA Free", "Set of 6"],
-                badge: "bestseller"
-            },
-            {
-                id: "2",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240311/cvQO/65eee24916fd2c6e6a4c9ca6/-473Wx593H-467154279-multi-MODEL.jpg",
-                brand: "HOME DECOR",
-                name: "Decorative Kitchen Organizer - Multi-Purpose Storage",
-                rating: "4.2",
-                reviews: "956",
-                currentPrice: "₹899",
-                originalPrice: "₹1,299",
-                discount: "(31% off)",
-                details: ["Multi-Purpose", "Decorative", "Easy Clean", "Durable"],
-                badge: "new"
-            },
-            {
-                id: "3",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240220/1xzd/65d4553905ac7d77bb686338/-473Wx593H-461582696-red-MODEL.jpg",
-                brand: "KITCHEN MATE",
-                name: "Red Kitchen Appliance - Compact Design for Modern Kitchen",
-                rating: "4.4",
-                reviews: "1,234",
-                currentPrice: "₹2,499",
-                originalPrice: "₹3,499",
-                discount: "(29% off)",
-                details: ["Compact Design", "Red Color", "Modern Style", "Easy Use"],
-                badge: ""
-            },
-            {
-                id: "4",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250218/4wQr/67b3b86859f8353980d72833/-473Wx593H-701199948-multi-MODEL.jpg",
-                brand: "SMART KITCHEN",
-                name: "Multi-Function Kitchen Gadget - All-in-One Solution",
-                rating: "4.1",
-                reviews: "2,134",
-                currentPrice: "₹1,799",
-                originalPrice: "₹2,599",
-                discount: "(31% off)",
-                details: ["Multi-Function", "All-in-One", "Smart Design", "Space Saving"],
-                badge: "sale"
-            },
-            {
-                id: "5",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240708/StLI/668bd18a6f60443f31a4c5f5/-473Wx593H-465104937-beige-MODEL2.jpg",
-                brand: "ELEGANT HOME",
-                name: "Beige Kitchen Storage Box - Premium Quality Organizer",
-                rating: "4.5",
-                reviews: "1,567",
-                currentPrice: "₹1,199",
-                originalPrice: "₹1,699",
-                discount: "(29% off)",
-                details: ["Beige Color", "Premium Quality", "Large Capacity", "Elegant Design"],
-                badge: ""
-            },
-            {
-                id: "6",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250304/TvpA/67c6c0ce59f83539801705bf/-473Wx593H-701294312-green-MODEL.jpg",
-                brand: "ECO KITCHEN",
-                name: "Green Eco-Friendly Kitchen Container - Sustainable Storage",
-                rating: "4.6",
-                reviews: "1,923",
-                currentPrice: "₹999",
-                originalPrice: "₹1,399",
-                discount: "(29% off)",
-                details: ["Eco-Friendly", "Green Color", "Sustainable", "Non-Toxic"],
-                badge: "bestseller"
-            },
-            {
-                id: "7",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230602/1WEU/647973fcd55b7d0c633edda6/-1117Wx1400H-462106822-multi-MODEL.jpg",
-                brand: "KITCHEN PRO",
-                name: "Professional Kitchen Tool Set - Complete Cooking Solution",
-                rating: "4.3",
-                reviews: "1,456",
-                currentPrice: "₹2,299",
-                originalPrice: "₹3,299",
-                discount: "(30% off)",
-                details: ["Professional Grade", "Complete Set", "Durable", "Multi-Tool"],
-                badge: ""
-            },
-            {
-                id: "8",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250509/ov34/681e3be67a6cd4182f23135e/-473Wx593H-701560096-blue-MODEL.jpg",
-                brand: "AQUA FRESH",
-                name: "Blue Water Storage Bottle - Large Capacity Hydration",
-                rating: "4.2",
-                reviews: "2,789",
-                currentPrice: "₹599",
-                originalPrice: "₹899",
-                discount: "(33% off)",
-                details: ["Large Capacity", "Blue Color", "BPA Free", "Leak Proof"],
-                badge: "sale"
-            },
-            {
-                id: "9",
-                img: "https://assets.ajio.com/medias/sys_master/root/20241028/RdEm/671f8acc260f9c41e8a7fd0d/-473Wx593H-464155583-clear-MODEL.jpg",
-                brand: "CRYSTAL CLEAR",
-                name: "Clear Glass Storage Jar - Transparent Kitchen Container",
-                rating: "4.4",
-                reviews: "3,421",
-                currentPrice: "₹799",
-                originalPrice: "₹1,199",
-                discount: "(33% off)",
-                details: ["Clear Glass", "Transparent", "Airtight", "Easy View"],
-                badge: ""
-            },
-            {
-                id: "10",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250323/wRyI/67e04e847a6cd4182f784a71/-473Wx593H-701365329-silver-MODEL.jpg",
-                brand: "SILVER SHINE",
-                name: "Silver Kitchen Appliance - Stainless Steel Premium Design",
-                rating: "4.7",
-                reviews: "5,234",
-                currentPrice: "₹3,499",
-                originalPrice: "₹4,999",
-                discount: "(30% off)",
-                details: ["Stainless Steel", "Silver Finish", "Premium Design", "Durable"],
-                badge: "bestseller"
-            },
-            {
-                id: "11",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250509/oLbw/681d37207a6cd4182f208b12/-473Wx593H-701556722-clear-MODEL.jpg",
-                brand: "PURE WATER",
-                name: "Clear Water Purification System - Advanced Filtration",
-                rating: "4.5",
-                reviews: "2,156",
-                currentPrice: "₹8,999",
-                originalPrice: "₹12,999",
-                discount: "(31% off)",
-                details: ["Advanced Filtration", "Clear Design", "Pure Water", "Easy Install"],
-                badge: "new"
-            },
-            {
-                id: "12",
-                img: "https://assets.ajio.com/medias/sys_master/root/20241103/r904/67278f4e260f9c41e8b901f9/-473Wx593H-700684411-black-MODEL.jpg",
-                brand: "BLACK ELEGANCE",
-                name: "Black Kitchen Appliance - Sleek Modern Design",
-                rating: "4.3",
-                reviews: "3,789",
-                currentPrice: "₹2,199",
-                originalPrice: "₹3,199",
-                discount: "(31% off)",
-                details: ["Black Finish", "Sleek Design", "Modern Style", "Premium Quality"],
-                badge: ""
-            },
-            {
-                id: "13",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230623/gGHP/6495753feebac147fcd511b4/-473Wx593H-464732525-brown-MODEL.jpg",
-                brand: "RUSTIC CHARM",
-                name: "Brown Wooden Kitchen Storage - Rustic Style Organizer",
-                rating: "4.1",
-                reviews: "4,567",
-                currentPrice: "₹1,899",
-                originalPrice: "₹2,799",
-                discount: "(32% off)",
-                details: ["Wooden Material", "Brown Finish", "Rustic Style", "Natural Look"],
-                badge: "sale"
-            },
-            {
-                id: "14",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240911/bcqn/66e1589d6f60443f316e2b7d/-473Wx593H-700404876-black-MODEL.jpg",
-                brand: "MODERN BLACK",
-                name: "Black Kitchen Gadget - Contemporary Design Tool",
-                rating: "4.2",
-                reviews: "6,234",
-                currentPrice: "₹1,499",
-                originalPrice: "₹2,199",
-                discount: "(32% off)",
-                details: ["Contemporary", "Black Color", "Modern Tool", "Ergonomic"],
-                badge: ""
-            },
-            {
-                id: "15",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230628/cymY/649c1915eebac147fc29a26e/-473Wx593H-465951921-yellow-MODEL.jpg",
-                brand: "SUNNY KITCHEN",
-                name: "Yellow Kitchen Accessory - Bright Colorful Design",
-                rating: "4.0",
-                reviews: "2,891",
-                currentPrice: "₹899",
-                originalPrice: "₹1,299",
-                discount: "(31% off)",
-                details: ["Yellow Color", "Bright Design", "Colorful", "Cheerful Look"],
-                badge: ""
-            },
-            {
-                id: "16",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250304/I3ar/67c6d78059f8353980179eb0/-473Wx593H-701295680-multi-MODEL.jpg",
-                brand: "RAINBOW KITCHEN",
-                name: "Multi-Color Kitchen Set - Vibrant Cooking Collection",
-                rating: "4.4",
-                reviews: "3,456",
-                currentPrice: "₹2,799",
-                originalPrice: "₹3,999",
-                discount: "(30% off)",
-                details: ["Multi-Color", "Vibrant Design", "Complete Set", "Cooking Collection"],
-                badge: "bestseller"
-            },
-            {
-                id: "17",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230621/Vy03/649249f4d55b7d0c63887f92/-473Wx593H-463417175-silver-MODEL.jpg",
-                brand: "PREMIUM SILVER",
-                name: "Silver Lunch Container - Premium Quality Food Storage",
-                rating: "4.3",
-                reviews: "1,789",
-                currentPrice: "₹1,299",
-                originalPrice: "₹1,899",
-                discount: "(32% off)",
-                details: ["Silver Finish", "Premium Quality", "Food Safe", "Leak Proof"],
-                badge: ""
-            },
-            {
-                id: "18",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250123/6pWE/6791f9d9663dbe1c5ff52460/-473Wx593H-462366642-brown-MODEL.jpg",
-                brand: "WOODEN CRAFT",
-                name: "Brown Wooden Kitchen Organizer - Handcrafted Storage",
-                rating: "4.2",
-                reviews: "4,123",
-                currentPrice: "₹1,699",
-                originalPrice: "₹2,499",
-                discount: "(32% off)",
-                details: ["Handcrafted", "Wooden Material", "Brown Finish", "Artisan Made"],
-                badge: ""
-            },
-            {
-                id: "19",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250123/S1OK/67920b5b0431850e0dbafa48/-473Wx593H-463229338-gold-MODEL.jpg",
-                brand: "GOLDEN LUXURY",
-                name: "Gold Kitchen Dinnerware - Luxury Dining Collection",
-                rating: "4.6",
-                reviews: "2,567",
-                currentPrice: "₹3,499",
-                originalPrice: "₹4,999",
-                discount: "(30% off)",
-                details: ["Gold Finish", "Luxury Design", "Dining Set", "Premium Quality"],
-                badge: ""
-            },
-            {
-                id: "20",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250219/62Gv/67b5a0e259f8353980ddf9a1/-473Wx593H-701234200-beige-MODEL.jpg",
-                brand: "NEUTRAL TONE",
-                name: "Beige Kitchen Storage System - Minimalist Organization",
-                rating: "4.4",
-                reviews: "7,891",
-                currentPrice: "₹2,299",
-                originalPrice: "₹3,299",
-                discount: "(30% off)",
-                details: ["Beige Color", "Minimalist", "Organization", "Clean Design"],
-                badge: "new"
-            }
-        ];
+let cardDetail = [
+    {
+        id: "1",
+        img: "https://assets.ajio.com/medias/sys_master/root/20240311/BItp/65ef1a2b05ac7d77bba99c6f/-473Wx593H-467154009-multi-MODEL.jpg",
+        title: "KITCHEN ESSENTIALS",
+        about: "Multi-Color Kitchen Storage Containers - Airtight Set",
+        star: "4.3",
+        reviews: "1,847",
+        price: "₹1,299",
+        strike: "₹1,899",
+        off: "(32% off)",
+        details: ["Airtight Seal", "Multi-Color", "BPA Free", "Set of 6"],
+        badge: "bestseller"
+    },
+    {
+        id: "2",
+        img: "https://assets.ajio.com/medias/sys_master/root/20240311/cvQO/65eee24916fd2c6e6a4c9ca6/-473Wx593H-467154279-multi-MODEL.jpg",
+        title: "HOME DECOR",
+        about: "Decorative Kitchen Organizer - Multi-Purpose Storage",
+        star: "4.2",
+        reviews: "956",
+        price: "₹899",
+        strike: "₹1,299",
+        off: "(31% off)",
+        details: ["Multi-Purpose", "Decorative", "Easy Clean", "Durable"],
+        badge: "new"
+    },
+    {
+        id: "3",
+        img: "https://assets.ajio.com/medias/sys_master/root/20240220/1xzd/65d4553905ac7d77bb686338/-473Wx593H-461582696-red-MODEL.jpg",
+        title: "KITCHEN MATE",
+        about: "Red Kitchen Appliance - Compact Design for Modern Kitchen",
+        star: "4.4",
+        reviews: "1,234",
+        price: "₹2,499",
+        strike: "₹3,499",
+        off: "(29% off)",
+        details: ["Compact Design", "Red Color", "Modern Style", "Easy Use"],
+        badge: ""
+    },
+    {
+        id: "4",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250218/4wQr/67b3b86859f8353980d72833/-473Wx593H-701199948-multi-MODEL.jpg",
+        title: "SMART KITCHEN",
+        about: "Multi-Function Kitchen Gadget - All-in-One Solution",
+        star: "4.1",
+        reviews: "2,134",
+        price: "₹1,799",
+        strike: "₹2,599",
+        off: "(31% off)",
+        details: ["Multi-Function", "All-in-One", "Smart Design", "Space Saving"],
+        badge: "sale"
+    },
+    {
+        id: "5",
+        img: "https://assets.ajio.com/medias/sys_master/root/20240708/StLI/668bd18a6f60443f31a4c5f5/-473Wx593H-465104937-beige-MODEL2.jpg",
+        title: "ELEGANT HOME",
+        about: "Beige Kitchen Storage Box - Premium Quality Organizer",
+        star: "4.5",
+        reviews: "1,567",
+        price: "₹1,199",
+        strike: "₹1,699",
+        off: "(29% off)",
+        details: ["Beige Color", "Premium Quality", "Large Capacity", "Elegant Design"],
+        badge: ""
+    },
+    {
+        id: "6",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250304/TvpA/67c6c0ce59f83539801705bf/-473Wx593H-701294312-green-MODEL.jpg",
+        title: "ECO KITCHEN",
+        about: "Green Eco-Friendly Kitchen Container - Sustainable Storage",
+        star: "4.6",
+        reviews: "1,923",
+        price: "₹999",
+        strike: "₹1,399",
+        off: "(29% off)",
+        details: ["Eco-Friendly", "Green Color", "Sustainable", "Non-Toxic"],
+        badge: "bestseller"
+    },
+    {
+        id: "7",
+        img: "https://assets.ajio.com/medias/sys_master/root/20230602/1WEU/647973fcd55b7d0c633edda6/-1117Wx1400H-462106822-multi-MODEL.jpg",
+        title: "KITCHEN PRO",
+        about: "Professional Kitchen Tool Set - Complete Cooking Solution",
+        star: "4.3",
+        reviews: "1,456",
+        price: "₹2,299",
+        strike: "₹3,299",
+        off: "(30% off)",
+        details: ["Professional Grade", "Complete Set", "Durable", "Multi-Tool"],
+        badge: ""
+    },
+    {
+        id: "8",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250509/ov34/681e3be67a6cd4182f23135e/-473Wx593H-701560096-blue-MODEL.jpg",
+        title: "AQUA FRESH",
+        about: "Blue Water Storage Bottle - Large Capacity Hydration",
+        star: "4.2",
+        reviews: "2,789",
+        price: "₹599",
+        strike: "₹899",
+        off: "(33% off)",
+        details: ["Large Capacity", "Blue Color", "BPA Free", "Leak Proof"],
+        badge: "sale"
+    },
+    {
+        id: "9",
+        img: "https://assets.ajio.com/medias/sys_master/root/20241028/RdEm/671f8acc260f9c41e8a7fd0d/-473Wx593H-464155583-clear-MODEL.jpg",
+        title: "CRYSTAL CLEAR",
+        about: "Clear Glass Storage Jar - Transparent Kitchen Container",
+        star: "4.4",
+        reviews: "3,421",
+        price: "₹799",
+        strike: "₹1,199",
+        off: "(33% off)",
+        details: ["Clear Glass", "Transparent", "Airtight", "Easy View"],
+        badge: ""
+    },
+    {
+        id: "10",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250323/wRyI/67e04e847a6cd4182f784a71/-473Wx593H-701365329-silver-MODEL.jpg",
+        title: "SILVER SHINE",
+        about: "Silver Kitchen Appliance - Stainless Steel Premium Design",
+        star: "4.7",
+        reviews: "5,234",
+        price: "₹3,499",
+        strike: "₹4,999",
+        off: "(30% off)",
+        details: ["Stainless Steel", "Silver Finish", "Premium Design", "Durable"],
+        badge: "bestseller"
+    },
+    {
+        id: "11",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250509/oLbw/681d37207a6cd4182f208b12/-473Wx593H-701556722-clear-MODEL.jpg",
+        title: "PURE WATER",
+        about: "Clear Water Purification System - Advanced Filtration",
+        star: "4.5",
+        reviews: "2,156",
+        price: "₹8,999",
+        strike: "₹12,999",
+        off: "(31% off)",
+        details: ["Advanced Filtration", "Clear Design", "Pure Water", "Easy Install"],
+        badge: "new"
+    },
+    {
+        id: "12",
+        img: "https://assets.ajio.com/medias/sys_master/root/20241103/r904/67278f4e260f9c41e8b901f9/-473Wx593H-700684411-black-MODEL.jpg",
+        title: "BLACK ELEGANCE",
+        about: "Black Kitchen Appliance - Sleek Modern Design",
+        star: "4.3",
+        reviews: "3,789",
+        price: "₹2,199",
+        strike: "₹3,199",
+        off: "(31% off)",
+        details: ["Black Finish", "Sleek Design", "Modern Style", "Premium Quality"],
+        badge: ""
+    },
+    {
+        id: "13",
+        img: "https://assets.ajio.com/medias/sys_master/root/20230623/gGHP/6495753feebac147fcd511b4/-473Wx593H-464732525-brown-MODEL.jpg",
+        title: "RUSTIC CHARM",
+        about: "Brown Wooden Kitchen Storage - Rustic Style Organizer",
+        star: "4.1",
+        reviews: "4,567",
+        price: "₹1,899",
+        strike: "₹2,799",
+        off: "(32% off)",
+        details: ["Wooden Material", "Brown Finish", "Rustic Style", "Natural Look"],
+        badge: "sale"
+    },
+    {
+        id: "14",
+        img: "https://assets.ajio.com/medias/sys_master/root/20240911/bcqn/66e1589d6f60443f316e2b7d/-473Wx593H-700404876-black-MODEL.jpg",
+        title: "MODERN BLACK",
+        about: "Black Kitchen Gadget - Contemporary Design Tool",
+        star: "4.2",
+        reviews: "6,234",
+        price: "₹1,499",
+        strike: "₹2,199",
+        off: "(32% off)",
+        details: ["Contemporary", "Black Color", "Modern Tool", "Ergonomic"],
+        badge: ""
+    },
+    {
+        id: "15",
+        img: "https://assets.ajio.com/medias/sys_master/root/20230628/cymY/649c1915eebac147fc29a26e/-473Wx593H-465951921-yellow-MODEL.jpg",
+        title: "SUNNY KITCHEN",
+        about: "Yellow Kitchen Accessory - Bright Colorful Design",
+        star: "4.0",
+        reviews: "2,891",
+        price: "₹899",
+        strike: "₹1,299",
+        off: "(31% off)",
+        details: ["Yellow Color", "Bright Design", "Colorful", "Cheerful Look"],
+        badge: ""
+    },
+    {
+        id: "16",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250304/I3ar/67c6d78059f8353980179eb0/-473Wx593H-701295680-multi-MODEL.jpg",
+        title: "RAINBOW KITCHEN",
+        about: "Multi-Color Kitchen Set - Vibrant Cooking Collection",
+        star: "4.4",
+        reviews: "3,456",
+        price: "₹2,799",
+        strike: "₹3,999",
+        off: "(30% off)",
+        details: ["Multi-Color", "Vibrant Design", "Complete Set", "Cooking Collection"],
+        badge: "bestseller"
+    },
+    {
+        id: "17",
+        img: "https://assets.ajio.com/medias/sys_master/root/20230621/Vy03/649249f4d55b7d0c63887f92/-473Wx593H-463417175-silver-MODEL.jpg",
+        title: "PREMIUM SILVER",
+        about: "Silver Lunch Container - Premium Quality Food Storage",
+        star: "4.3",
+        reviews: "1,789",
+        price: "₹1,299",
+        strike: "₹1,899",
+        off: "(32% off)",
+        details: ["Silver Finish", "Premium Quality", "Food Safe", "Leak Proof"],
+        badge: ""
+    },
+    {
+        id: "18",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250123/6pWE/6791f9d9663dbe1c5ff52460/-473Wx593H-462366642-brown-MODEL.jpg",
+        title: "WOODEN CRAFT",
+        about: "Brown Wooden Kitchen Organizer - Handcrafted Storage",
+        star: "4.2",
+        reviews: "4,123",
+        price: "₹1,699",
+        strike: "₹2,499",
+        off: "(32% off)",
+        details: ["Handcrafted", "Wooden Material", "Brown Finish", "Artisan Made"],
+        badge: ""
+    },
+    {
+        id: "19",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250123/S1OK/67920b5b0431850e0dbafa48/-473Wx593H-463229338-gold-MODEL.jpg",
+        title: "GOLDEN LUXURY",
+        about: "Gold Kitchen Dinnerware - Luxury Dining Collection",
+        star: "4.6",
+        reviews: "2,567",
+        price: "₹3,499",
+        strike: "₹4,999",
+        off: "(30% off)",
+        details: ["Gold Finish", "Luxury Design", "Dining Set", "Premium Quality"],
+        badge: ""
+    },
+    {
+        id: "20",
+        img: "https://assets.ajio.com/medias/sys_master/root/20250219/62Gv/67b5a0e259f8353980ddf9a1/-473Wx593H-701234200-beige-MODEL.jpg",
+        title: "NEUTRAL TONE",
+        about: "Beige Kitchen Storage System - Minimalist Organization",
+        star: "4.4",
+        reviews: "7,891",
+        price: "₹2,299",
+        strike: "₹3,299",
+        off: "(30% off)",
+        details: ["Beige Color", "Minimalist", "Organization", "Clean Design"],
+        badge: "new"
+    }
+];
 
-        // Generate product cards
-        for (let i = 0; i < homeKitchenProducts.length; i++) {
+        let array = []
+        for (let i = 0; i < cardDetail.length; i++) {
             let product = document.getElementById("products");
             let card = document.createElement("div");
             card.className = "product-card";
@@ -893,9 +338,9 @@
             
             // Create details HTML
             let detailsHTML = '';
-            if (homeKitchenProducts[i].details && homeKitchenProducts[i].details.length > 0) {
+            if (cardDetail[i].details && cardDetail[i].details.length > 0) {
                 detailsHTML = '<div class="product-details">';
-                homeKitchenProducts[i].details.forEach(detail => {
+                cardDetail[i].details.forEach(detail => {
                     detailsHTML += `<span class="detail-tag">${detail}</span>`;
                 });
                 detailsHTML += '</div>';
@@ -903,66 +348,53 @@
 
             // Create badge HTML
             let badgeHTML = '';
-            if (homeKitchenProducts[i].badge) {
-                let badgeClass = `badge-${homeKitchenProducts[i].badge}`;
-                let badgeText = homeKitchenProducts[i].badge === 'bestseller' ? 'Best Seller' : 
-                               homeKitchenProducts[i].badge === 'new' ? 'New' : 'Sale';
+            if (cardDetail[i].badge) {
+                let badgeClass = `badge-${cardDetail[i].badge}`;
+                let badgeText = cardDetail[i].badge === 'bestseller' ? 'Best Seller' : 
+                               cardDetail[i].badge === 'new' ? 'New' : 'Sale';
                 badgeHTML = `<div class="badge ${badgeClass}">${badgeText}</div>`;
             }
             
             card.innerHTML = `
                 <div class="product-image">
-                    <img src="${homeKitchenProducts[i].img}" alt="${homeKitchenProducts[i].name}" />
-                    ${badgeHTML}
-                    <button class="wishlist-btn">♡</button>
+                    <a href="./cart.html">    
+                    <img src="${cardDetail[i].img}" alt="${cardDetail[i].name}" />                    
+                    <!-- CSS-only Like Button -->
+                    <input type="checkbox" class="like-checkbox" id="like-${cardDetail[i].id}" />
+                    <label class="wishlist-btn" for="like-${cardDetail[i].id}"></label>               
                     <button class="quick-view-btn">Quick View</button>
+                    </a> 
                 </div>
                 <div class="product-info">
-                    <div class="brand-name">${homeKitchenProducts[i].brand}</div>
-                    <div class="product-name">${homeKitchenProducts[i].name}</div>
+                    <div class="brand-name">${cardDetail[i].title}</div>
+                    <div class="product-name">${cardDetail[i].about}</div>
                     <div class="rating-section">
-                        <div class="rating-stars">${homeKitchenProducts[i].rating} ★</div>
-                        <div class="rating-count">(${homeKitchenProducts[i].reviews})</div>
+                        <div class="rating-stars">${cardDetail[i].star} ★</div>
+                        <div class="rating-count">(${cardDetail[i].reviews})</div>
                     </div>
                     <div class="price-section">
-                        <span class="current-price">${homeKitchenProducts[i].currentPrice}</span>
-                        <span class="original-price">${homeKitchenProducts[i].originalPrice}</span>
-                        <span class="discount-percent">${homeKitchenProducts[i].discount}</span>
+                        <span class="current-price">${cardDetail[i].price}</span>
+                        <span class="original-price">${cardDetail[i].strike}</span>
+                        <span class="discount-percent">${cardDetail[i].off}</span>
                     </div>
                     ${detailsHTML}
                 </div>
             `;
+              card.querySelector(".product-image").addEventListener("click", function(){
+                array.push(cardDetail[i])
+                localStorage.setItem("cardDetail" , JSON.stringify(array))
+                console.log(array);
+                
+            })
         }
-
-        // Add click events
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (!e.target.classList.contains('wishlist-btn') && !e.target.classList.contains('quick-view-btn')) {
-                    console.log('Product clicked:', this.querySelector('.product-name').textContent);
-                }
-            });
-        });
-
-        document.querySelectorAll('.wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.textContent = this.textContent === '♡' ? '♥' : '♡';
-                this.style.color = this.textContent === '♥' ? '#ff6b35' : '#282c3f';
-            });
-        });
-
-        document.querySelectorAll('.quick-view-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                console.log('Quick view clicked for:', this.closest('.product-card').querySelector('.product-name').textContent);
-            });
-        });
-
-        // Sort functionality
-        document.querySelector('.sort-dropdown').addEventListener('change', function() {
-            console.log('Sort changed to:', this.value);
-            // Add sorting logic here
-        });
     </script>
+<script type="module">
+    import nav from './navbar.js';
+    document.getElementById("Nav").appendChild(nav());
+    window.initializeNavbar && window.initializeNavbar();
+
+    import footer from './footer.js';
+    document.getElementById("Footer").appendChild(footer());
+</script>
 </body>
 </html>

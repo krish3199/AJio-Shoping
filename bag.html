@@ -19,27 +19,8 @@
         </div>
 
         <div class="main-content">
-            <div class="cart-items">
-                <div class="cart-item">
-                    <img src="https://assets.ajio.com/medias/sys_master/root/20240311/BItp/65ef1a2b05ac7d77bba99c5e/-288Wx360H-467154009-multi-MODEL.jpg" alt="Jaipur Fabric Bedsheet" class="item-image">
-                    <div class="item-details">
-                        <h3 class="item-name">Jaipur Fabric - 150 GSM Floral Print Double Bedsheet with Pillow Covers</h3>
-                        <div class="item-specs">
-                            <span>Size: <strong>OS</strong></span>
-                            <span>Qty: <strong>1</strong></span>
-                        </div>
-                        <div class="item-pricing">
-                            <span class="original-price">Rs. 1,999.00</span>
-                            <span class="discount-badge">(71%)</span>
-                            <span class="sale-price">Rs. 580.00</span>
-                        </div>
-                        <div class="savings-text">Savings: Rs. 1,419.00</div>
-                        <div class="item-actions">
-                            <a href="#" class="action-link">Delete</a>
-                            <a href="#" class="action-link">♡ Move to Wishlist</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="cart-items" id="cartItem">
+             
             </div>
 
             <div class="order-summary">
@@ -232,18 +213,48 @@
             </div>
         </div>
     </footer>
+    <script>
+
+       let addCart =  JSON.parse(localStorage.getItem("addTo"))
+       let cartItem = document.getElementById("cartItem")
+       addCart.forEach(e => {
+            cartItem.innerHTML += `
+               <div class="cart-item">
+                    <img src="${e.img}" alt="Jaipur Fabric Bedsheet" class="item-image">
+                    <div class="item-details">
+                        <h3 class="item-name">${e.about}</h3>
+                        <div class="item-specs">
+                            <span>Size: <strong>OS</strong></span>
+                            <span>Qty: <strong>1</strong></span>
+                        </div>
+                        <div class="item-pricing">
+                            <span class="original-price">Rs. ${e.price}</span>
+                            <span class="discount-badge">(71%)</span>
+                            <span class="sale-price">Rs. 580.00</span>
+                        </div>
+                        <div class="savings-text">Savings: Rs. 1,419.00</div>
+                        <div class="item-actions">
+                            <a href="#" class="action-link">Delete</a>
+                            <a href="#" class="action-link">♡ Move to Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+             `
+       });
+   
+            </script>
+    <script type="module">
+      import nav from './navbar.js';
+      document.getElementById("Nav").appendChild(nav());
+      window.initializeNavbar && window.initializeNavbar();
+      const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
+      if (bagIcon) {
+        bagIcon.style.cursor = 'pointer';
+        bagIcon.addEventListener('click', function() {
+          window.location.href = 'bag.html';
+        });
+      }
+     
+    </script>
 </body>
 </html>
-<script type="module">
-  import nav from './navbar.js';
-  document.getElementById("Nav").appendChild(nav());
-  window.initializeNavbar && window.initializeNavbar();
-  const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
-  if (bagIcon) {
-    bagIcon.style.cursor = 'pointer';
-    bagIcon.addEventListener('click', function() {
-      window.location.href = 'bag.html';
-    });
-  }
- 
-</script>
