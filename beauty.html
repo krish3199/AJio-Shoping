@@ -7,530 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #ffffff;
-            color: #282c3f;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-        
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background-color: #ffffff;
-            margin-top: 80px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Header Section */
-        .header-section {
-            background-color: #ffffff;
-            padding: 32px 0;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        /* Top Bar */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px;
-            margin-bottom: 28px;
-            background-color: #fafafa;
-            border-radius: 12px;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .results-count {
-            font-size: 18px;
-            font-weight: 600;
-            color: #282c3f;
-        }
-        
-        .filter-sort-section {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-        
-        .view-options {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .view-text {
-            font-size: 13px;
-            font-weight: 600;
-            color: #696b79;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        
-        .grid-toggle {
-            display: flex;
-            gap: 3px;
-            padding: 8px;
-            border: 1px solid #d4d5d9;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background-color: #ffffff;
-        }
-        
-        .grid-toggle:hover {
-            border-color: #b0b0b0;
-            background-color: #f5f5f5;
-        }
-        
-        .grid-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #282c3f;
-            border-radius: 2px;
-        }
-        
-        .sort-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .sort-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #696b79;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        
-        .sort-dropdown {
-            padding: 10px 16px;
-            border: 1px solid #d4d5d9;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            background-color: #ffffff;
-            color: #282c3f;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.2s ease;
-            min-width: 160px;
-        }
-        
-        .sort-dropdown:hover,
-        .sort-dropdown:focus {
-            border-color: #b0b0b0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Page Title */
-        .page-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #282c3f;
-            margin-bottom: 0;
-            text-align: left;
-            letter-spacing: -0.5px;
-            padding: 0 4px;
-        }
-        
-        /* Product Grid - EXACTLY 4 CARDS PER ROW */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 0;
-        }
-        
-        /* Product Card */
-        .product-card {
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            border: 1px solid transparent;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        
-        .product-card:hover {
-            box-shadow: 0 8px 24px rgba(40, 44, 63, 0.12);
-            border-color: #f0f0f0;
-            transform: translateY(-4px);
-        }
-        
-        /* Image Container */
-        .product-image {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-            background-color: #fafafa;
-        }
-        
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.4s ease;
-        }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.06);
-        }
-        
-        /* Wishlist Button */
-        .wishlist-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 32px;
-            height: 32px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            font-size: 14px;
-            color: #282c3f;
-        }
-        
-        .product-card:hover .wishlist-btn {
-            opacity: 1;
-        }
-        
-        .wishlist-btn:hover {
-            background-color: #ffffff;
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Quick View Button */
-        .quick-view-btn {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%) translateY(30px);
-            background-color: #282c3f;
-            color: #ffffff;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(40, 44, 63, 0.3);
-        }
-        
-        .product-card:hover .quick-view-btn {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        
-        .quick-view-btn:hover {
-            background-color: #1a1d29;
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 16px rgba(40, 44, 63, 0.4);
-        }
-        
-        /* Product Info */
-        .product-info {
-            padding: 14px 10px 18px 10px;
-        }
-        
-        /* Brand Name */
-        .brand-name {
-            font-size: 12px;
-            font-weight: 700;
-            color: #282c3f;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        
-        /* Product Name */
-        .product-name {
-            font-size: 13px;
-            font-weight: 400;
-            color: #696b79;
-            margin-bottom: 10px;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: 36px;
-        }
-        
-        /* Rating */
-        .rating-section {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-        
-        .rating-stars {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            padding: 3px 6px;
-            background-color: #388e3c;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-        
-        .rating-count {
-            font-size: 11px;
-            color: #696b79;
-            font-weight: 400;
-        }
-        
-        /* Price Section */
-        .price-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .current-price {
-            font-size: 16px;
-            font-weight: 700;
-            color: #282c3f;
-        }
-        
-        .original-price {
-            font-size: 13px;
-            color: #696b79;
-            text-decoration: line-through;
-            font-weight: 400;
-        }
-        
-        .discount-percent {
-            font-size: 11px;
-            color: #ff6f61;
-            font-weight: 600;
-        }
 
-        /* Product Details */
-        .product-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-            margin-bottom: 6px;
-        }
-
-        .detail-tag {
-            font-size: 10px;
-            color: #696b79;
-            background-color: #f5f5f6;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-        
-        /* RESPONSIVE */
-        /* Large Desktop - 4 CARDS */
-        @media (min-width: 1200px) {
-            .product-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 24px;
-            }
-            
-            .product-image {
-                height: 380px;
-            }
-        }
-        
-        /* Medium Desktop - 4 CARDS */
-        @media (max-width: 1199px) and (min-width: 992px) {
-            .product-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-            
-            .product-image {
-                height: 320px;
-            }
-        }
-        
-        /* Tablet - 3 CARDS */
-        @media (max-width: 991px) and (min-width: 768px) {
-            .container {
-                margin-top: 20px;
-                padding: 0 16px;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 18px;
-            }
-            
-            .product-image {
-                height: 280px;
-            }
-            
-            .topbar {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
-                padding: 20px 16px;
-            }
-            
-            .filter-sort-section {
-                width: 100%;
-                justify-content: space-between;
-                gap: 20px;
-            }
-        }
-        
-        /* Mobile - 2 CARDS */
-        @media (max-width: 767px) {
-            .container {
-                margin-top: 20px;
-                padding: 0 12px;
-            }
-            
-            .header-section {
-                padding: 24px 0;
-                margin-bottom: 32px;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .product-image {
-                height: 200px;
-            }
-            
-            .product-info {
-                padding: 10px 8px 14px 8px;
-            }
-            
-            .brand-name {
-                font-size: 11px;
-            }
-            
-            .product-name {
-                font-size: 12px;
-                height: 32px;
-            }
-            
-            .current-price {
-                font-size: 14px;
-            }
-            
-            .original-price {
-                font-size: 12px;
-            }
-            
-            .page-title {
-                font-size: 24px;
-            }
-            
-            .topbar {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
-                padding: 16px 12px;
-            }
-            
-            .filter-sort-section {
-                width: 100%;
-                justify-content: space-between;
-                gap: 16px;
-            }
-
-            .detail-tag {
-                font-size: 9px;
-                padding: 2px 6px;
-            }
-        }
-        
-        /* Loading Animation */
-        .product-card {
-            animation: fadeInUp 0.6s ease forwards;
-            animation-delay: calc(var(--i, 0) * 0.08s);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Selection */
-        ::selection {
-            background-color: #282c3f;
-            color: #ffffff;
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f8f9fa;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #d4d5d9;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #b0b0b0;
-        }
-        
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 <body>
     <div id="Nav"></div>
     
-    <div class="container">
+    <div class="containere">
         <!-- Header Section -->
         <div class="header-section">
             <div class="topbar">
@@ -570,251 +56,252 @@
     <div id="Footer"></div>
 
     <script>
-        let beautyProducts = [
-            {
-                id: "1",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250221/TAYO/67b8166d59f8353980e58a9a/-473Wx593H-4900554630-softpink-MODEL.jpg",
-                brand: "AJIO",
-                name: "Soft Pink Casual Top - Comfortable Cotton Blend",
-                rating: "4.2",
-                reviews: "1,247",
-                currentPrice: "₹899",
-                originalPrice: "₹1,299",
-                discount: "(31% off)",
-                details: ["Cotton Blend", "Soft Pink", "Casual Wear", "Machine Wash"]
-            },
-            {
-                id: "2",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230512/b6n5/645e6c0942f9e729d77d3dfc/-473Wx593H-4937167230-multi-MODEL.jpg",
-                brand: "FASHION FORWARD",
-                name: "Multi-Color Printed Dress - Vibrant Summer Collection",
-                rating: "4.5",
-                reviews: "2,156",
-                currentPrice: "₹1,599",
-                originalPrice: "₹2,299",
-                discount: "(30% off)",
-                details: ["Multi Print", "Summer Wear", "Breathable", "Party Dress"]
-            },
-            {
-                id: "3",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230512/M5RP/645e6990d55b7d0c63aa5b45/-473Wx593H-4925194890-multi-MODEL.jpg",
-                brand: "TRENDY STYLES",
-                name: "Colorful Printed Kurti - Traditional Ethnic Wear",
-                rating: "4.3",
-                reviews: "892",
-                currentPrice: "₹1,199",
-                originalPrice: "₹1,799",
-                discount: "(33% off)",
-                details: ["Ethnic Print", "Cotton", "Traditional", "Festive Wear"]
-            },
-            {
-                id: "4",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230512/Emod/645e553142f9e729d77ca711/-1117Wx1400H-4937167210-multi-MODEL.jpg",
-                brand: "MODERN CHIC",
-                name: "Multi-Pattern Blouse - Contemporary Design",
-                rating: "4.1",
-                reviews: "1,534",
-                currentPrice: "₹1,299",
-                originalPrice: "₹1,899",
-                discount: "(32% off)",
-                details: ["Contemporary", "Multi Pattern", "Office Wear", "Polyester"]
-            },
-            {
-                id: "5",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250626/h5kf/685d1da80f920c69cc59a0b9/-473Wx593H-4932890670-multi-MODEL.jpg",
-                brand: "STYLE ESSENCE",
-                name: "Floral Print Top - Elegant Summer Collection",
-                rating: "4.4",
-                reviews: "2,567",
-                currentPrice: "₹999",
-                originalPrice: "₹1,499",
-                discount: "(33% off)",
-                details: ["Floral Print", "Summer", "Elegant", "Lightweight"]
-            },
-            {
-                id: "6",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250509/CXl0/681dac617a6cd4182f218e0f/-473Wx593H-4937171660-multi-MODEL.jpg",
-                brand: "CASUAL COMFORT",
-                name: "Striped Casual Shirt - Relaxed Fit Design",
-                rating: "4.0",
-                reviews: "1,923",
-                currentPrice: "₹799",
-                originalPrice: "₹1,199",
-                discount: "(33% off)",
-                details: ["Striped", "Casual", "Relaxed Fit", "Cotton"]
-            },
-            {
-                id: "7",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230925/ZIFN/6511a919afa4cf41f507d374/-473Wx593H-4933810740-multi-MODEL.jpg",
-                brand: "VIBRANT WEAR",
-                name: "Colorful Ethnic Dress - Festival Special",
-                rating: "4.6",
-                reviews: "1,456",
-                currentPrice: "₹1,799",
-                originalPrice: "₹2,599",
-                discount: "(31% off)",
-                details: ["Ethnic", "Colorful", "Festival", "Traditional"]
-            },
-            {
-                id: "8",
-                img: "https://assets.ajio.com/medias/sys_master/root/20231204/JCFB/656d9f84ddf7791519af5110/-473Wx593H-4942392770-multi-MODEL.jpg",
-                brand: "ELEGANT CHOICE",
-                name: "Designer Printed Kurti - Premium Collection",
-                rating: "4.5",
-                reviews: "2,789",
-                currentPrice: "₹1,499",
-                originalPrice: "₹2,199",
-                discount: "(32% off)",
-                details: ["Designer", "Premium", "Printed", "Kurti"]
-            },
-            {
-                id: "9",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230513/So1Q/645e86bad55b7d0c63aa73fb/-473Wx593H-4937171100-multi-MODEL.jpg",
-                brand: "FASHION HUB",
-                name: "Trendy Printed Top - Modern Style Statement",
-                rating: "4.2",
-                reviews: "3,421",
-                currentPrice: "₹1,099",
-                originalPrice: "₹1,599",
-                discount: "(31% off)",
-                details: ["Trendy", "Printed", "Modern", "Stylish"]
-            },
-            {
-                id: "10",
-                img: "https://assets.ajio.com/medias/sys_master/root/20231201/8PhS/6569ce2dddf7791519aa0e45/-473Wx593H-4942622630-multi-MODEL.jpg",
-                brand: "COMFORT ZONE",
-                name: "Casual Everyday Wear - Comfortable Fit",
-                rating: "4.3",
-                reviews: "5,234",
-                currentPrice: "₹899",
-                originalPrice: "₹1,299",
-                discount: "(31% off)",
-                details: ["Casual", "Everyday", "Comfortable", "Regular Fit"]
-            },
-            {
-                id: "11",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230513/0XAB/645e8f3fd55b7d0c63aa96f5/-473Wx593H-4937171730-multi-MODEL.jpg",
-                brand: "CHIC COLLECTION",
-                name: "Stylish Printed Blouse - Office to Party",
-                rating: "4.4",
-                reviews: "2,156",
-                currentPrice: "₹1,299",
-                originalPrice: "₹1,899",
-                discount: "(32% off)",
-                details: ["Stylish", "Versatile", "Office Wear", "Party Wear"]
-            },
-            {
-                id: "12",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230804/ab5V/64cd1dd5eebac147fca88a69/-473Wx593H-4937171650-multi-MODEL.jpg",
-                brand: "MODERN TRENDS",
-                name: "Contemporary Print Top - Fashion Forward",
-                rating: "4.1",
-                reviews: "3,789",
-                currentPrice: "₹1,199",
-                originalPrice: "₹1,799",
-                discount: "(33% off)",
-                details: ["Contemporary", "Fashion Forward", "Trendy", "Modern"]
-            },
-            {
-                id: "13",
-                img: "https://assets.ajio.com/medias/sys_master/root/20231120/BrV1/655b451fddf77915198d4a70/-473Wx593H-4942622570-black-MODEL.jpg",
-                brand: "CLASSIC BLACK",
-                name: "Black Elegant Dress - Timeless Style",
-                rating: "4.7",
-                reviews: "4,567",
-                currentPrice: "₹1,699",
-                originalPrice: "₹2,499",
-                discount: "(32% off)",
-                details: ["Black", "Elegant", "Timeless", "Classic"]
-            },
-            {
-                id: "14",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240325/uNeC/6601220605ac7d77bbd6f3da/-473Wx593H-4936939150-multi-MODEL.jpg",
-                brand: "COLORFUL VIBES",
-                name: "Multi-Color Casual Wear - Vibrant Collection",
-                rating: "4.2",
-                reviews: "6,234",
-                currentPrice: "₹999",
-                originalPrice: "₹1,499",
-                discount: "(33% off)",
-                details: ["Multi-Color", "Vibrant", "Casual", "Trendy"]
-            },
-            {
-                id: "15",
-                img: "https://assets.ajio.com/medias/sys_master/root/20240530/auzy/6658a96316fd2c6e6a3f9949/-473Wx593H-4926581310-multi-MODEL.jpg",
-                brand: "SUMMER BREEZE",
-                name: "Light Summer Top - Breathable Fabric",
-                rating: "4.5",
-                reviews: "2,891",
-                currentPrice: "₹799",
-                originalPrice: "₹1,199",
-                discount: "(33% off)",
-                details: ["Summer", "Light", "Breathable", "Comfortable"]
-            },
-            {
-                id: "16",
-                img: "https://assets.ajio.com/medias/sys_master/root/20231004/E115/651d5732ddf77915191bee22/-473Wx593H-4919389130-multi-MODEL.jpg",
-                brand: "ETHNIC CHARM",
-                name: "Traditional Print Kurti - Cultural Heritage",
-                rating: "4.6",
-                reviews: "3,456",
-                currentPrice: "₹1,399",
-                originalPrice: "₹1,999",
-                discount: "(30% off)",
-                details: ["Traditional", "Cultural", "Ethnic", "Heritage"]
-            },
-            {
-                id: "17",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230731/6p0C/64c7cdfea9b42d15c97cf978/-473Wx593H-4932880410-multi-MODEL.jpg",
-                brand: "PARTY PERFECT",
-                name: "Glamorous Party Wear - Special Occasion",
-                rating: "4.4",
-                reviews: "1,789",
-                currentPrice: "₹1,899",
-                originalPrice: "₹2,799",
-                discount: "(32% off)",
-                details: ["Glamorous", "Party Wear", "Special", "Occasion"]
-            },
-            {
-                id: "18",
-                img: "https://assets.ajio.com/medias/sys_master/root/20230623/1v7q/6495d6cda9b42d15c9cbc776/-473Wx593H-410101763-assorted-MODEL.jpg",
-                brand: "ASSORTED STYLES",
-                name: "Mixed Pattern Collection - Versatile Wardrobe",
-                rating: "4.3",
-                reviews: "4,123",
-                currentPrice: "₹1,299",
-                originalPrice: "₹1,899",
-                discount: "(32% off)",
-                details: ["Mixed Pattern", "Versatile", "Wardrobe", "Collection"]
-            },
-            {
-                id: "19",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250121/6M3q/678f7e46663dbe1c5feaae43/-473Wx593H-4925754280-multi-MODEL.jpg",
-                brand: "BRIGHT COLORS",
-                name: "Colorful Casual Top - Cheerful Design",
-                rating: "4.2",
-                reviews: "2,567",
-                currentPrice: "₹899",
-                originalPrice: "₹1,299",
-                discount: "(31% off)",
-                details: ["Colorful", "Cheerful", "Casual", "Bright"]
-            },
-            {
-                id: "20",
-                img: "https://assets.ajio.com/medias/sys_master/root/20250221/0QF1/67b813672960820c499aa5c0/-473Wx593H-4911601020-ivoryfair01-MODEL.jpg",
-                brand: "IVORY ELEGANCE",
-                name: "Ivory Fair Dress - Sophisticated Style",
-                rating: "4.5",
-                reviews: "7,891",
-                currentPrice: "₹1,599",
-                originalPrice: "₹2,299",
-                discount: "(30% off)",
-                details: ["Ivory", "Sophisticated", "Elegant", "Fair"]
-            }
-        ];
+let cardDetail = [
+  {
+    id: "1",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250221/TAYO/67b8166d59f8353980e58a9a/-473Wx593H-4900554630-softpink-MODEL.jpg",
+    title: "AJIO",
+    about: "Soft Pink Casual Top - Comfortable Cotton Blend",
+    star: "4.2",
+    reviews: "1,247",
+    price: "₹899",
+    strike: "₹1,299",
+    off: "(31% off)",
+    details: ["Cotton Blend", "Soft Pink", "Casual Wear", "Machine Wash"]
+  },
+  {
+    id: "2",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230512/b6n5/645e6c0942f9e729d77d3dfc/-473Wx593H-4937167230-multi-MODEL.jpg",
+    title: "FASHION FORWARD",
+    about: "Multi-Color Printed Dress - Vibrant Summer Collection",
+    star: "4.5",
+    reviews: "2,156",
+    price: "₹1,599",
+    strike: "₹2,299",
+    off: "(30% off)",
+    details: ["Multi Print", "Summer Wear", "Breathable", "Party Dress"]
+  },
+  {
+    id: "3",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230512/M5RP/645e6990d55b7d0c63aa5b45/-473Wx593H-4925194890-multi-MODEL.jpg",
+    title: "TRENDY STYLES",
+    about: "Colorful Printed Kurti - Traditional Ethnic Wear",
+    star: "4.3",
+    reviews: "892",
+    price: "₹1,199",
+    strike: "₹1,799",
+    off: "(33% off)",
+    details: ["Ethnic Print", "Cotton", "Traditional", "Festive Wear"]
+  },
+  {
+    id: "4",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230512/Emod/645e553142f9e729d77ca711/-1117Wx1400H-4937167210-multi-MODEL.jpg",
+    title: "MODERN CHIC",
+    about: "Multi-Pattern Blouse - Contemporary Design",
+    star: "4.1",
+    reviews: "1,534",
+    price: "₹1,299",
+    strike: "₹1,899",
+    off: "(32% off)",
+    details: ["Contemporary", "Multi Pattern", "Office Wear", "Polyester"]
+  },
+  {
+    id: "5",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250626/h5kf/685d1da80f920c69cc59a0b9/-473Wx593H-4932890670-multi-MODEL.jpg",
+    title: "STYLE ESSENCE",
+    about: "Floral Print Top - Elegant Summer Collection",
+    star: "4.4",
+    reviews: "2,567",
+    price: "₹999",
+    strike: "₹1,499",
+    off: "(33% off)",
+    details: ["Floral Print", "Summer", "Elegant", "Lightweight"]
+  },
+  {
+    id: "6",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250509/CXl0/681dac617a6cd4182f218e0f/-473Wx593H-4937171660-multi-MODEL.jpg",
+    title: "CASUAL COMFORT",
+    about: "Striped Casual Shirt - Relaxed Fit Design",
+    star: "4.0",
+    reviews: "1,923",
+    price: "₹799",
+    strike: "₹1,199",
+    off: "(33% off)",
+    details: ["Striped", "Casual", "Relaxed Fit", "Cotton"]
+  },
+  {
+    id: "7",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230925/ZIFN/6511a919afa4cf41f507d374/-473Wx593H-4933810740-multi-MODEL.jpg",
+    title: "VIBRANT WEAR",
+    about: "Colorful Ethnic Dress - Festival Special",
+    star: "4.6",
+    reviews: "1,456",
+    price: "₹1,799",
+    strike: "₹2,599",
+    off: "(31% off)",
+    details: ["Ethnic", "Colorful", "Festival", "Traditional"]
+  },
+  {
+    id: "8",
+    img: "https://assets.ajio.com/medias/sys_master/root/20231204/JCFB/656d9f84ddf7791519af5110/-473Wx593H-4942392770-multi-MODEL.jpg",
+    title: "ELEGANT CHOICE",
+    about: "Designer Printed Kurti - Premium Collection",
+    star: "4.5",
+    reviews: "2,789",
+    price: "₹1,499",
+    strike: "₹2,199",
+    off: "(32% off)",
+    details: ["Designer", "Premium", "Printed", "Kurti"]
+  },
+  {
+    id: "9",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230513/So1Q/645e86bad55b7d0c63aa73fb/-473Wx593H-4937171100-multi-MODEL.jpg",
+    title: "FASHION HUB",
+    about: "Trendy Printed Top - Modern Style Statement",
+    star: "4.2",
+    reviews: "3,421",
+    price: "₹1,099",
+    strike: "₹1,599",
+    off: "(31% off)",
+    details: ["Trendy", "Printed", "Modern", "Stylish"]
+  },
+  {
+    id: "10",
+    img: "https://assets.ajio.com/medias/sys_master/root/20231201/8PhS/6569ce2dddf7791519aa0e45/-473Wx593H-4942622630-multi-MODEL.jpg",
+    title: "COMFORT ZONE",
+    about: "Casual Everyday Wear - Comfortable Fit",
+    star: "4.3",
+    reviews: "5,234",
+    price: "₹899",
+    strike: "₹1,299",
+    off: "(31% off)",
+    details: ["Casual", "Everyday", "Comfortable", "Regular Fit"]
+  },
+  {
+    id: "11",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230513/0XAB/645e8f3fd55b7d0c63aa96f5/-473Wx593H-4937171730-multi-MODEL.jpg",
+    title: "CHIC COLLECTION",
+    about: "Stylish Printed Blouse - Office to Party",
+    star: "4.4",
+    reviews: "2,156",
+    price: "₹1,299",
+    strike: "₹1,899",
+    off: "(32% off)",
+    details: ["Stylish", "Versatile", "Office Wear", "Party Wear"]
+  },
+  {
+    id: "12",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230804/ab5V/64cd1dd5eebac147fca88a69/-473Wx593H-4937171650-multi-MODEL.jpg",
+    title: "MODERN TRENDS",
+    about: "Contemporary Print Top - Fashion Forward",
+    star: "4.1",
+    reviews: "3,789",
+    price: "₹1,199",
+    strike: "₹1,799",
+    off: "(33% off)",
+    details: ["Contemporary", "Fashion Forward", "Trendy", "Modern"]
+  },
+  {
+    id: "13",
+    img: "https://assets.ajio.com/medias/sys_master/root/20231120/BrV1/655b451fddf77915198d4a70/-473Wx593H-4942622570-black-MODEL.jpg",
+    title: "CLASSIC BLACK",
+    about: "Black Elegant Dress - Timeless Style",
+    star: "4.7",
+    reviews: "4,567",
+    price: "₹1,699",
+    strike: "₹2,499",
+    off: "(32% off)",
+    details: ["Black", "Elegant", "Timeless", "Classic"]
+  },
+  {
+    id: "14",
+    img: "https://assets.ajio.com/medias/sys_master/root/20240325/uNeC/6601220605ac7d77bbd6f3da/-473Wx593H-4936939150-multi-MODEL.jpg",
+    title: "COLORFUL VIBES",
+    about: "Multi-Color Casual Wear - Vibrant Collection",
+    star: "4.2",
+    reviews: "6,234",
+    price: "₹999",
+    strike: "₹1,499",
+    off: "(33% off)",
+    details: ["Multi-Color", "Vibrant", "Casual", "Trendy"]
+  },
+  {
+    id: "15",
+    img: "https://assets.ajio.com/medias/sys_master/root/20240530/auzy/6658a96316fd2c6e6a3f9949/-473Wx593H-4926581310-multi-MODEL.jpg",
+    title: "SUMMER BREEZE",
+    about: "Light Summer Top - Breathable Fabric",
+    star: "4.5",
+    reviews: "2,891",
+    price: "₹799",
+    strike: "₹1,199",
+    off: "(33% off)",
+    details: ["Summer", "Light", "Breathable", "Comfortable"]
+  },
+  {
+    id: "16",
+    img: "https://assets.ajio.com/medias/sys_master/root/20231004/E115/651d5732ddf77915191bee22/-473Wx593H-4919389130-multi-MODEL.jpg",
+    title: "ETHNIC CHARM",
+    about: "Traditional Print Kurti - Cultural Heritage",
+    star: "4.6",
+    reviews: "3,456",
+    price: "₹1,399",
+    strike: "₹1,999",
+    off: "(30% off)",
+    details: ["Traditional", "Cultural", "Ethnic", "Heritage"]
+  },
+  {
+    id: "17",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230731/6p0C/64c7cdfea9b42d15c97cf978/-473Wx593H-4932880410-multi-MODEL.jpg",
+    title: "PARTY PERFECT",
+    about: "Glamorous Party Wear - Special Occasion",
+    star: "4.4",
+    reviews: "1,789",
+    price: "₹1,899",
+    strike: "₹2,799",
+    off: "(32% off)",
+    details: ["Glamorous", "Party Wear", "Special", "Occasion"]
+  },
+  {
+    id: "18",
+    img: "https://assets.ajio.com/medias/sys_master/root/20230623/1v7q/6495d6cda9b42d15c9cbc776/-473Wx593H-410101763-assorted-MODEL.jpg",
+    title: "ASSORTED STYLES",
+    about: "Mixed Pattern Collection - Versatile Wardrobe",
+    star: "4.3",
+    reviews: "4,123",
+    price: "₹1,299",
+    strike: "₹1,899",
+    off: "(32% off)",
+    details: ["Mixed Pattern", "Versatile", "Wardrobe", "Collection"]
+  },
+  {
+    id: "19",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250121/6M3q/678f7e46663dbe1c5feaae43/-473Wx593H-4925754280-multi-MODEL.jpg",
+    title: "BRIGHT COLORS",
+    about: "Colorful Casual Top - Cheerful Design",
+    star: "4.2",
+    reviews: "2,567",
+    price: "₹899",
+    strike: "₹1,299",
+    off: "(31% off)",
+    details: ["Colorful", "Cheerful", "Casual", "Bright"]
+  },
+  {
+    id: "20",
+    img: "https://assets.ajio.com/medias/sys_master/root/20250221/0QF1/67b813672960820c499aa5c0/-473Wx593H-4911601020-ivoryfair01-MODEL.jpg",
+    title: "IVORY ELEGANCE",
+    about: "Ivory Fair Dress - Sophisticated Style",
+    star: "4.5",
+    reviews: "7,891",
+    price: "₹1,599",
+    strike: "₹2,299",
+    off: "(30% off)",
+    details: ["Ivory", "Sophisticated", "Elegant", "Fair"]
+  }
+];
 
-        // Generate product cards
-        for (let i = 0; i < beautyProducts.length; i++) {
+
+        let array = []
+        for (let i = 0; i < cardDetail.length; i++) {
             let product = document.getElementById("products");
             let card = document.createElement("div");
             card.className = "product-card";
@@ -823,9 +310,9 @@
             
             // Create details HTML
             let detailsHTML = '';
-            if (beautyProducts[i].details && beautyProducts[i].details.length > 0) {
+            if (cardDetail[i].details && cardDetail[i].details.length > 0) {
                 detailsHTML = '<div class="product-details">';
-                beautyProducts[i].details.forEach(detail => {
+                cardDetail[i].details.forEach(detail => {
                     detailsHTML += `<span class="detail-tag">${detail}</span>`;
                 });
                 detailsHTML += '</div>';
@@ -833,70 +320,41 @@
             
             card.innerHTML = `
                 <div class="product-image">
-                    <img src="${beautyProducts[i].img}" alt="${beautyProducts[i].name}" />
-                    <button class="wishlist-btn">♡</button>
+                    <a href="./cart.html">    
+                    <img src="${cardDetail[i].img}" alt="${cardDetail[i].name}" />                    
+                    <!-- CSS-only Like Button -->
+                    <input type="checkbox" class="like-checkbox" id="like-${cardDetail[i].id}" />
+                    <label class="wishlist-btn" for="like-${cardDetail[i].id}"></label>               
                     <button class="quick-view-btn">Quick View</button>
+                    </a> 
                 </div>
                 <div class="product-info">
-                    <div class="brand-name">${beautyProducts[i].brand}</div>
-                    <div class="product-name">${beautyProducts[i].name}</div>
+                    <div class="brand-name">${cardDetail[i].title}</div>
+                    <div class="product-name">${cardDetail[i].about}</div>
                     <div class="rating-section">
-                        <div class="rating-stars">${beautyProducts[i].rating} ★</div>
-                        <div class="rating-count">(${beautyProducts[i].reviews})</div>
+                        <div class="rating-stars">${cardDetail[i].star} ★</div>
+                        <div class="rating-count">(${cardDetail[i].reviews})</div>
                     </div>
                     ${detailsHTML}
                     <div class="price-section">
-                        <span class="current-price">${beautyProducts[i].currentPrice}</span>
-                        <span class="original-price">${beautyProducts[i].originalPrice}</span>
-                        <span class="discount-percent">${beautyProducts[i].discount}</span>
+                        <span class="current-price">${cardDetail[i].price}</span>
+                        <span class="original-price">${cardDetail[i].strike}</span>
+                        <span class="discount-percent">${cardDetail[i].off}</span>
                     </div>
                 </div>
             `;
+              card.querySelector(".product-image").addEventListener("click", function(){
+                array.push(cardDetail[i])
+                localStorage.setItem("cardDetail" , JSON.stringify(array))
+                console.log(array);
+                
+            })
         }
-
-        // Add click events
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (!e.target.classList.contains('wishlist-btn') && !e.target.classList.contains('quick-view-btn')) {
-                    console.log('Product clicked:', this.querySelector('.product-name').textContent);
-                }
-            });
-        });
-
-        document.querySelectorAll('.wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.textContent = this.textContent === '♡' ? '♥' : '♡';
-                this.style.color = this.textContent === '♥' ? '#ff6f61' : '#282c3f';
-            });
-        });
-
-        document.querySelectorAll('.quick-view-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                console.log('Quick view clicked for product');
-            });
-        });
-
-        // Sort functionality
-        document.querySelector('.sort-dropdown').addEventListener('change', function() {
-            console.log('Sort changed to:', this.value);
-            // Add sorting logic here
-        });
     </script>
     <script type="module">
     import nav from './navbar.js';
     document.getElementById("Nav").appendChild(nav());
     window.initializeNavbar && window.initializeNavbar();
-    
-    // Bag icon click event after navbar is rendered
-    const bagIcon = document.querySelector('.nav-bag, .ri-shopping-bag-line');
-    if (bagIcon) {
-      bagIcon.style.cursor = 'pointer';
-      bagIcon.addEventListener('click', function() {
-        window.location.href = 'bag.html';
-      });
-    }
     
     import footer from './footer.js';
     document.getElementById("Footer").appendChild(footer());

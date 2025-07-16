@@ -9,7 +9,7 @@ function nav() {
                 <!-- Navigation Menu -->
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="men.html" class="nav-link">Men</a>
+                        <a href="./men.html" class="nav-link">Men</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -74,7 +74,7 @@ function nav() {
                     </li>
                     
                     <li class="nav-item">
-                        <a href="women.html" class="nav-link">Women</a>
+                        <a href="./women.html" class="nav-link">Women</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -144,7 +144,7 @@ function nav() {
                     </li>
                     
                     <li class="nav-item">
-                        <a href="kids.html" class="nav-link">Kids</a>
+                        <a href="./kids.html" class="nav-link">Kids</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -213,7 +213,7 @@ function nav() {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="beauty.html" class="nav-link">Beauty</a>
+                        <a href="./beauty.html" class="nav-link">Beauty</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -282,7 +282,7 @@ function nav() {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="kitchen.html" class="nav-link">Kitchen</a>
+                        <a href="./kitchen.html" class="nav-link">Kitchen</a>
                         <div class="mega-menu">
                             <div class="mega-menu-content">
                                 <div class="mega-menu-sidebar">
@@ -368,7 +368,7 @@ function nav() {
                     <div class="nav-icons">
                         <a href="#" class="icon-link" title="Wishlist">
                         <i class="ri-heart-3-line"></i></a>
-                        <a href="#" class="icon-link" title="Shopping Bag">
+                        <a href="./bag.html" class="icon-link" title="Shopping Bag">
                             <i class="ri-shopping-bag-line"></i>
                         </a>
                     </div>
@@ -385,7 +385,7 @@ function nav() {
                   </div>
 
                   <!-- Cart Icon -->
-                  <a href="#" class="icon-links" id="cartIcon" title="Shopping Bag">
+                  <a href="./bag.html" class="icon-links" id="cartIcon" title="Shopping Bag">
                       <i class="ri-shopping-bag-line"></i>
                   </a>
                 </div>
@@ -397,19 +397,19 @@ function nav() {
                     </div>
                     
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Men</a>
+                        <a href="./men.html" class="mobile-nav-link">Men</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Women</a>
+                        <a href="./women.html" class="mobile-nav-link">Women</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Kids</a>
+                        <a href="./kids.html" class="mobile-nav-link">Kids</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Beauty</a>
+                        <a href="./beauty.html" class="mobile-nav-link">Beauty</a>
                     </div>
                     <div class="mobile-nav-item">
-                        <a href="#" class="mobile-nav-link">Home & Kitchen</a>
+                        <a href="./kitchen.html" class="mobile-nav-link">Home & Kitchen</a>
                     </div>
                     
                     <div class="mobile-right-links">
