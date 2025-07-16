@@ -1932,6 +1932,7 @@ html, body {
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 30px;
+            margin-top: 80px;
         }
 
         .cart-items {
