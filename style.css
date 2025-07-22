@@ -1905,10 +1905,7 @@ html, body {
             color: #333;
         }
 
-        .cart-count {
-            color: #666;
-            font-weight: 400;
-        }
+      
 
         .wishlist-link {
             color: #007bff;
@@ -1925,6 +1922,7 @@ html, body {
             grid-template-columns: 1fr 350px;
             margin-top: 70px;
             gap: 30px;
+            margin-top: 80px;
         }
 
         .cart-items {
