@@ -131,7 +131,7 @@
         .qr-code {
             width: 200px;
             height: 200px;
-            border-radius: 15px;
+            border-radius: 2px;
             border: 3px solid #e9ecef;
             background: #ffffff;
             display: flex;
@@ -141,7 +141,7 @@
             color: #999;
             position: relative;
             overflow: hidden;
-            background-image: url("https://w7.pngwing.com/pngs/1006/79/png-transparent-qr-code-qr-code-qr-code.png");
+            background-image: url("./assets/WhatsApp\ Image\ 2025-07-21\ at\ 4.23.30\ PM.jpeg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -436,13 +436,13 @@
             </div>
            
             <div class="amount-section">
-                <p class="amount-label">Total Amount</p>
+                <p class="amount-label">Total Max Amount</p>
                 <h2 class="amount-value">
                     <span class="currency">₹ &nbsp;</span>10,00,000
                 </h2>
             </div>
            
-            <button class="pay-button pulse">
+            <button class="pay-button pulse" onclick="payment()">
                 Pay Securely Now
             </button>
            
@@ -457,6 +457,11 @@
         </div>
     </div>
 
+    <script>
+        function payment(){
+            alert("Successfully Send Amount...")
+        }
+    </script>
    
 </body>
 </html>

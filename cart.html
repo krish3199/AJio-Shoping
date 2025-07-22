@@ -261,19 +261,22 @@
               </button>
               </a>
             <div class="quality-text">HANDPICKED STYLES | ASSURED QUALITY</div>
-
-            <button class="wishlist-btn">
-              <span class="heart-icon">♡</span>
-              SAVE TO WISHLIST
-            </button>
           </div>
         </div>
       </div>
     </div>`
 
     products.querySelector(".action-buttons").addEventListener("click" , function(){
-        adddToCart.push(e)
-        localStorage.setItem("addTo", JSON.stringify(adddToCart))
+        let addTo = JSON.parse(localStorage.getItem("addTo")) || [];
+        // Check if product already exists (by id)
+        let existing = addTo.find(item => item.id === e.id);
+        if (existing) {
+            existing.qty = (existing.qty || 1) + 1;
+        } else {
+            let newItem = {...e, qty: 1};
+            addTo.push(newItem);
+        }
+        localStorage.setItem("addTo", JSON.stringify(addTo));
     })
       })
     </script>

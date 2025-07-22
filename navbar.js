@@ -385,7 +385,7 @@ function nav() {
                   </div>
 
                   <!-- Cart Icon -->
-                  <a href="./bag.html" class="icon-links" id="cartIcon" title="Shopping Bag">
+                  <a href="#" class="icon-links" id="cartIcon" title="Shopping Bag">
                       <i class="ri-shopping-bag-line"></i>
                   </a>
                 </div>
