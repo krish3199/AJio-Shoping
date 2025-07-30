@@ -171,8 +171,12 @@
       let cart = JSON.parse(localStorage.getItem("cardDetail"))      
       let products = document.getElementById("products")
       let adddToCart = []
+      
+      // Clear products container first
+      products.innerHTML = ""
+      
       cart.forEach((e , i)=>{
-      products.innerHTML = `
+      products.innerHTML += `
       <div class="containerr">
       <div class="product-section">
         <div class="product-images">
@@ -271,7 +275,9 @@
       </div>
     </div>`
 
-    products.querySelector(".action-buttons").addEventListener("click" , function(){
+    // Add event listener to the current product's action buttons
+    const currentProductElement = products.lastElementChild;
+    currentProductElement.querySelector(".action-buttons").addEventListener("click" , function(){
         let addTo = JSON.parse(localStorage.getItem("addTo")) || [];
         // Check if product already exists (by id)
         let existing = addTo.find(item => item.id === e.id);
@@ -282,6 +288,7 @@
             addTo.push(newItem);
         }
         localStorage.setItem("addTo", JSON.stringify(addTo));
+        alert("Product added to bag!");
     })
       })
     </script>
