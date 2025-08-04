@@ -141,7 +141,7 @@
             color: #999;
             position: relative;
             overflow: hidden;
-            background-image: url("./assets/WhatsApp\ Image\ 2025-07-21\ at\ 4.23.30\ PM.jpeg");
+            background-image: url("./assets/WhatsApp\ Image\ 2025-08-01\ at\ 2.02.30\ PM.jpeg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -409,8 +409,17 @@
     </style>
 </head>
 <body>
-    <div class="payment-container">
-        <div class="payment-box">
+    <div class="payment-container" id="payContainer"></div>
+
+    <script>
+        function payment(){
+            alert("Successfully Send Amount...")
+        }
+        let totalPrice = localStorage.getItem("totalPrice")
+        console.log(totalPrice);
+        let payContainer = document.getElementById("payContainer")
+        payContainer.innerHTML = `
+                    <div class="payment-box">
            
             <div class="header-section">
                 <h1 class="logo">
@@ -438,7 +447,7 @@
             <div class="amount-section">
                 <p class="amount-label">Total Max Amount</p>
                 <h2 class="amount-value">
-                    <span class="currency">₹ &nbsp;</span>10,00,000
+                    <span class="currency">₹ &nbsp;</span>${totalPrice} 
                 </h2>
             </div>
            
@@ -455,12 +464,8 @@
                 Secure
             </div>
         </div>
-    </div>
-
-    <script>
-        function payment(){
-            alert("Successfully Send Amount...")
-        }
+        `
+        
     </script>
    
 </body>

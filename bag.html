@@ -227,6 +227,7 @@
             </div>
           </div>
         `;
+        localStorage.setItem("totalPrice", orderTotal)
       });
       // Update order summary
       document.querySelector('.summary-row:nth-child(2) span:last-child').textContent = `₹${bagTotal.toLocaleString()}`;
@@ -255,6 +256,7 @@
     }
 
     renderCart();
+
   </script>
 
   <!-- Success Popup Modal -->
