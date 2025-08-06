@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AJIO - Secure Payment</title>
+    <link rel="shortcut icon" href="https://img.utdstc.com/icon/b7e/c6b/b7ec6bcad19a722c6f27fb3297d7ae074982d7915c421d541f5e07072fe654a9:200" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -412,9 +413,6 @@
     <div class="payment-container" id="payContainer"></div>
 
     <script>
-        function payment(){
-            alert("Successfully Send Amount...")
-        }
         let totalPrice = localStorage.getItem("totalPrice")
         console.log(totalPrice);
         let payContainer = document.getElementById("payContainer")
@@ -451,7 +449,7 @@
                 </h2>
             </div>
            
-            <button class="pay-button pulse" onclick="payment()">
+            <button class="pay-button pulse" onclick="payNow()">
                 Pay Securely Now
             </button>
            
@@ -465,8 +463,12 @@
             </div>
         </div>
         `
-        
+    function payNow() {
+        localStorage.setItem("orderSuccess", "true");
+        localStorage.removeItem("addTo");
+        window.location.href = "bag.html";
+    }
     </script>
-   
+
 </body>
 </html>

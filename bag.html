@@ -4,10 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Bag - Shopping Cart</title>
+  <link rel="shortcut icon" href="https://img.utdstc.com/icon/b7e/c6b/b7ec6bcad19a722c6f27fb3297d7ae074982d7915c421d541f5e07072fe654a9:200" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="style.css" />
+  <style>
+.item-actions-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  min-width: 70px;
+  background: #fafbfc;
+  border-radius: 10px;
+  padding: 10px 8px;
+  margin-left: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 4px 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.qty-controls button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.qty-controls button:hover {
+  background: #ff6b35;
+  color: #fff;
+  border-color: #ff6b35;
+}
+.delete-action, .wishlist-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff6b35;
+  font-size: 20px;
+  border: 1px solid #eee;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-top: 2px;
+}
+.delete-action:hover {
+  background: #ff6b35;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255,107,53,0.10);
+}
+.wishlist-action:hover {
+  background: #f8e6e0;
+  color: #ff6b35;
+  box-shadow: 0 2px 8px rgba(255,107,53,0.10);
+}
+@media (max-width: 600px) {
+  .item-actions-vertical {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    min-width: unset;
+    padding: 6px 2px;
+    margin-left: 0;
+    margin-top: 8px;
+    box-shadow: none;
+    background: transparent;
+  }
+  .qty-controls {
+    padding: 2px 4px;
+  }
+  .delete-action, .wishlist-action {
+    width: 28px;
+    height: 28px;
+    font-size: 17px;
+  }
+}
+</style>
 </head>
 <body>
   <div id="Nav"></div>
@@ -201,7 +287,7 @@
         let itemTotal = unitPrice * qty;
         bagTotal += itemTotal;
         // For demo, assume discount is 71% as in UI
-        let discount = Math.round(itemTotal * 0.71);
+        let discount = Math.round(itemTotal * 0.21);
         bagDiscount += discount;
         orderTotal += (itemTotal - discount);
         cartItem.innerHTML += `
@@ -211,7 +297,7 @@
               <h3 class="item-name">${e.about}</h3>
               <div class="item-pricing">
                 <span class="original-price">Rs. ${unitPrice}</span>
-                <span class="discount-badge">(71%)</span>
+                <span class="discount-badge">(21%)</span>
                 <span class="sale-price">Rs. ${itemTotal - discount}</span>
               </div>
               <div class="savings-text">Savings: Rs. ${discount}</div>
@@ -299,91 +385,33 @@
       });
     }
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if orderSuccess flag is set
+    if (localStorage.getItem("orderSuccess") === "true") {
+      // Hide normal content
+      document.querySelector('.main-content').style.display = 'none';
+
+      // Show empty-cart section
+      const emptyCart = document.getElementById('empty-cart');
+      emptyCart.style.display = 'block';
+
+      // Change text
+      emptyCart.querySelector('h2').innerText = "Your products are processing to be delivered.";
+
+      // Change button text
+      const button = emptyCart.querySelector('a');
+      button.innerText = "Continue Shopping";
+
+      // Clear the flag
+      localStorage.removeItem("orderSuccess");
+    }
+  });
+</script>
+
+
+
 </body>
 </html>
 
-<style>
-.item-actions-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
-  min-width: 70px;
-  background: #fafbfc;
-  border-radius: 10px;
-  padding: 10px 8px;
-  margin-left: 12px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-.qty-controls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #fff;
-  border-radius: 20px;
-  padding: 4px 8px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-.qty-controls button {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  background: #f5f5f5;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-.qty-controls button:hover {
-  background: #ff6b35;
-  color: #fff;
-  border-color: #ff6b35;
-}
-.delete-action, .wishlist-action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #fff;
-  color: #ff6b35;
-  font-size: 20px;
-  border: 1px solid #eee;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  margin-top: 2px;
-}
-.delete-action:hover {
-  background: #ff6b35;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(255,107,53,0.10);
-}
-.wishlist-action:hover {
-  background: #f8e6e0;
-  color: #ff6b35;
-  box-shadow: 0 2px 8px rgba(255,107,53,0.10);
-}
-@media (max-width: 600px) {
-  .item-actions-vertical {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    min-width: unset;
-    padding: 6px 2px;
-    margin-left: 0;
-    margin-top: 8px;
-    box-shadow: none;
-    background: transparent;
-  }
-  .qty-controls {
-    padding: 2px 4px;
-  }
-  .delete-action, .wishlist-action {
-    width: 28px;
-    height: 28px;
-    font-size: 17px;
-  }
-}
-</style>
+
